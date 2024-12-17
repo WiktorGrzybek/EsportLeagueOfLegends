@@ -1,0 +1,232 @@
+CREATE SCHEMA IF NOT EXISTS EsportLeagueOfLegends;
+
+CREATE TABLE EsportLeagueOfLegends.Regiony (
+    RegionID SERIAL PRIMARY KEY,
+    Nazwa VARCHAR(100) NOT NULL,
+    Skrót VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE EsportLeagueOfLegends.Drużyny (
+    DrużynaID SERIAL PRIMARY KEY,
+    Nazwa VARCHAR(100) NOT NULL,
+    RegionID INT NOT NULL,
+    CONSTRAINT FK_Drużyny_Region FOREIGN KEY (RegionID) REFERENCES EsportLeagueOfLegends.Regiony(RegionID)
+);
+-- Tabela Gracze
+CREATE TABLE EsportLeagueOfLegends.Gracze (
+    GraczID SERIAL PRIMARY KEY,
+    Nickname VARCHAR(50) NOT NULL,
+    DrużynaID INT NOT NULL,
+    Przegrane INT DEFAULT 0,
+    Wygrane INT DEFAULT 0,
+    Eliminacje INT DEFAULT 0,
+    Asysty INT DEFAULT 0,
+    Zgony INT DEFAULT 0,
+    Pozycja VARCHAR(30),
+    CONSTRAINT FK_Gracze_Drużyny FOREIGN KEY (DrużynaID) REFERENCES EsportLeagueOfLegends.Drużyny(DrużynaID)
+);
+-- Tabela Trenerzy
+CREATE TABLE EsportLeagueOfLegends.Trenerzy (
+    TrenerID SERIAL PRIMARY KEY,
+    Imię VARCHAR(50) NOT NULL,
+    Nazwisko VARCHAR(50) NOT NULL,
+    DrużynaID INT NOT NULL,
+    CONSTRAINT FK_Trenerzy_Drużyny FOREIGN KEY (DrużynaID) REFERENCES EsportLeagueOfLegends.Drużyny(DrużynaID)
+);
+-- Tabela Transfery
+CREATE TABLE EsportLeagueOfLegends.Transfery (
+    TransferID SERIAL PRIMARY KEY,
+    GraczID INT NOT NULL,
+    Drużyna1 INT NOT NULL,
+    Drużyna2 INT NOT NULL,
+    TrenerID INT,
+    CONSTRAINT FK_Transfery_Gracze FOREIGN KEY (GraczID) REFERENCES EsportLeagueOfLegends.Gracze(GraczID),
+    CONSTRAINT FK_Transfery_Drużyna1 FOREIGN KEY (Drużyna1) REFERENCES EsportLeagueOfLegends.Drużyny(DrużynaID),
+    CONSTRAINT FK_Transfery_Drużyna2 FOREIGN KEY (Drużyna2) REFERENCES EsportLeagueOfLegends.Drużyny(DrużynaID),
+    CONSTRAINT FK_Transfery_Trenerzy FOREIGN KEY (TrenerID) REFERENCES EsportLeagueOfLegends.Trenerzy(TrenerID)
+);
+-- Tabela Turnieje
+CREATE TABLE EsportLeagueOfLegends.Turnieje (
+    TurniejID SERIAL PRIMARY KEY,
+    NazwaTurnieju VARCHAR(100) NOT NULL,
+    Rodzaj VARCHAR(50),
+    Organizator VARCHAR(100),
+    Adres VARCHAR(200),
+    RegionID INT NOT NULL,
+    Data DATE,
+    CONSTRAINT FK_Turnieje_Regiony FOREIGN KEY (RegionID) REFERENCES EsportLeagueOfLegends.Regiony(RegionID)
+);
+-- Tabela Komentatorzy
+CREATE TABLE EsportLeagueOfLegends.Komentatorzy (
+    KomentatorID SERIAL PRIMARY KEY,
+    Imię VARCHAR(50) NOT NULL,
+    Nazwisko VARCHAR(50) NOT NULL,
+    Nickname VARCHAR(50) NOT NULL
+);
+-- Tabela Mecze
+CREATE TABLE EsportLeagueOfLegends.Mecze (
+    MeczID SERIAL PRIMARY KEY,
+    KomentatorID INT NOT NULL,
+    TurniejID INT NOT NULL,
+    CONSTRAINT FK_Mecze_Komentatorzy FOREIGN KEY (KomentatorID) REFERENCES EsportLeagueOfLegends.Komentatorzy(KomentatorID),
+    CONSTRAINT FK_Mecze_Turnieje FOREIGN KEY (TurniejID) REFERENCES EsportLeagueOfLegends.Turnieje(TurniejID)
+);
+-- Tabela Postacie
+CREATE TABLE EsportLeagueOfLegends.Postacie (
+    PostaćID SERIAL PRIMARY KEY,
+    Nazwa VARCHAR(50) NOT NULL,
+    Piktogram VARCHAR(200)
+);
+-- Tabela xyz
+CREATE TABLE EsportLeagueOfLegends.xyz (
+    UniqueID SERIAL PRIMARY KEY,
+    GraczID INT NOT NULL,
+    MeczID INT NOT NULL,
+    PostaćID INT NOT NULL,
+    Wynik INT,
+    CONSTRAINT FK_xyz_Gracze FOREIGN KEY (GraczID) REFERENCES EsportLeagueOfLegends.Gracze(GraczID),
+    CONSTRAINT FK_xyz_Mecze FOREIGN KEY (MeczID) REFERENCES EsportLeagueOfLegends.Mecze(MeczID),
+    CONSTRAINT FK_xyz_Postać FOREIGN KEY (PostaćID) REFERENCES EsportLeagueOfLegends.Postacie(PostaćID)
+);
+-- Procedury dla Regiony
+CREATE OR REPLACE PROCEDURE EsportLeagueOfLegends.DodajRegion(
+    p_Nazwa VARCHAR(100),
+    p_Skrót VARCHAR(10)
+) LANGUAGE plpgsql AS $$
+BEGIN
+    INSERT INTO EsportLeagueOfLegends.Regiony (Nazwa, Skrót)
+    VALUES (p_Nazwa, p_Skrót);
+END;
+$$;
+CREATE OR REPLACE PROCEDURE EsportLeagueOfLegends.UsuńRegion(
+    p_RegionID INT
+) LANGUAGE plpgsql AS $$
+BEGIN
+    DELETE FROM EsportLeagueOfLegends.Regiony
+    WHERE RegionID = p_RegionID;
+END;
+$$;
+CREATE OR REPLACE PROCEDURE EsportLeagueOfLegends.EdytujRegion(
+    p_RegionID INT,
+    p_Nazwa VARCHAR(100),
+    p_Skrót VARCHAR(10)
+) LANGUAGE plpgsql AS $$
+BEGIN
+    UPDATE EsportLeagueOfLegends.Regiony
+    SET Nazwa = p_Nazwa, Skrót = p_Skrót
+    WHERE RegionID = p_RegionID;
+END;
+$$;
+-- Procedury dla Drużyny
+CREATE OR REPLACE PROCEDURE EsportLeagueOfLegends.DodajDrużynę(
+    p_Nazwa VARCHAR(100),
+    p_RegionID INT
+) LANGUAGE plpgsql AS $$
+BEGIN
+    INSERT INTO EsportLeagueOfLegends.Drużyny (Nazwa, RegionID)
+    VALUES (p_Nazwa, p_RegionID);
+END;
+$$;
+CREATE OR REPLACE PROCEDURE EsportLeagueOfLegends.UsuńDrużynę(
+    p_DrużynaID INT
+) LANGUAGE plpgsql AS $$
+BEGIN
+    DELETE FROM EsportLeagueOfLegends.Drużyny
+    WHERE DrużynaID = p_DrużynaID;
+END;
+$$;
+CREATE OR REPLACE PROCEDURE EsportLeagueOfLegends.EdytujDrużynę(
+    p_DrużynaID INT,
+    p_Nazwa VARCHAR(100),
+    p_RegionID INT
+) LANGUAGE plpgsql AS $$
+BEGIN
+    UPDATE EsportLeagueOfLegends.Drużyny
+    SET Nazwa = p_Nazwa, RegionID = p_RegionID
+    WHERE DrużynaID = p_DrużynaID;
+END;
+$$;
+-- Procedury dla Gracze
+CREATE OR REPLACE PROCEDURE EsportLeagueOfLegends.DodajGracza(
+    p_Nickname VARCHAR(50),
+    p_DrużynaID INT,
+    p_Pozycja VARCHAR(30)
+) LANGUAGE plpgsql AS $$
+BEGIN
+    INSERT INTO EsportLeagueOfLegends.Gracze (Nickname, DrużynaID, Pozycja)
+    VALUES (p_Nickname, p_DrużynaID, p_Pozycja);
+END;
+$$;
+CREATE OR REPLACE PROCEDURE EsportLeagueOfLegends.UsuńGracza(
+    p_GraczID INT
+) LANGUAGE plpgsql AS $$
+BEGIN
+    DELETE FROM EsportLeagueOfLegends.Gracze
+    WHERE GraczID = p_GraczID;
+END;
+$$;
+CREATE OR REPLACE PROCEDURE EsportLeagueOfLegends.EdytujGracza(
+    p_GraczID INT,
+    p_Nickname VARCHAR(50),
+    p_DrużynaID INT,
+    p_Pozycja VARCHAR(30)
+) LANGUAGE plpgsql AS $$
+BEGIN
+    UPDATE EsportLeagueOfLegends.Gracze
+    SET Nickname = p_Nickname, DrużynaID = p_DrużynaID, Pozycja = p_Pozycja
+    WHERE GraczID = p_GraczID;
+END;
+$$;
+-- Funkcja Średnia Eliminacji, Zgonów i Asyst
+CREATE OR REPLACE FUNCTION EsportLeagueOfLegends.ŚredniaEliminacjiZgonówIAsyst(
+    p_GraczID INT
+) RETURNS TABLE (
+    ŚredniaEliminacji FLOAT,
+    ŚredniaZgonów FLOAT,
+    ŚredniaAsyst FLOAT
+) LANGUAGE plpgsql AS $$
+BEGIN
+    RETURN QUERY
+    SELECT
+        COALESCE(AVG(Eliminacje), 0) AS ŚredniaEliminacji,
+        COALESCE(AVG(Zgony), 0) AS ŚredniaZgonów,
+        COALESCE(AVG(Asysty), 0) AS ŚredniaAsyst
+    FROM EsportLeagueOfLegends.Gracze
+    WHERE GraczID = p_GraczID;
+END;
+$$;
+CREATE OR REPLACE FUNCTION EsportLeagueOfLegends.LiczbaDrużynWRegionie(
+    p_RegionID INT
+)
+RETURNS INT
+LANGUAGE plpgsql
+AS $$
+DECLARE
+    liczba_drużyn INT;
+BEGIN
+    SELECT COUNT(*) INTO liczba_drużyn
+    FROM EsportLeagueOfLegends.Drużyny
+    WHERE RegionID = p_RegionID;
+ 
+    RETURN liczba_drużyn;
+END;
+$$;
+CREATE OR REPLACE FUNCTION EsportLeagueOfLegends.NajlepszyGraczWDrużynie(
+    p_DrużynaID INT
+)
+RETURNS TABLE (
+    GraczID INT,
+    Nickname VARCHAR(50),
+    Eliminacje INT
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    RETURN QUERY
+    SELECT GraczID, Nickname, Eliminacje
+    FROM EsportLeagueOfLegends.Gracze
+    WHERE DrużynaID = p_DrużynaID
+    ORDER BY Eliminacje DESC
+    LIMIT 1;
+END;
+$$;
