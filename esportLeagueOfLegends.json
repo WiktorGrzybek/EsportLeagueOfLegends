@@ -1,0 +1,1478 @@
+
+[
+    {
+        "regiony": {
+            "skrot": "EU",
+            "druzyny": [
+                {
+                    "gracze": [
+                        {
+                            "zgony": 65,
+                            "asysty": 90,
+                            "graczid": 39,
+                            "pozycja": "ADC",
+                            "wygrane": 12,
+                            "nickname": "FoFoMid",
+                            "przegrane": 8,
+                            "eliminacje": 150
+                        },
+                        {
+                            "zgony": 90,
+                            "asysty": 110,
+                            "graczid": 40,
+                            "pozycja": "Mid",
+                            "wygrane": 14,
+                            "nickname": "Wei2Kid",
+                            "przegrane": 10,
+                            "eliminacje": 200
+                        },
+                        {
+                            "zgony": 100,
+                            "asysty": 130,
+                            "graczid": 41,
+                            "pozycja": "Support",
+                            "wygrane": 13,
+                            "nickname": "MingGo",
+                            "przegrane": 11,
+                            "eliminacje": 230
+                        },
+                        {
+                            "zgony": 85,
+                            "asysty": 100,
+                            "graczid": 42,
+                            "pozycja": "Jungle",
+                            "wygrane": 15,
+                            "nickname": "CrispShot",
+                            "przegrane": 9,
+                            "eliminacje": 190
+                        },
+                        {
+                            "zgony": 110,
+                            "asysty": 140,
+                            "graczid": 43,
+                            "pozycja": "Top",
+                            "wygrane": 16,
+                            "nickname": "MorganOne",
+                            "przegrane": 12,
+                            "eliminacje": 240
+                        },
+                        {
+                            "zgony": 150,
+                            "asysty": 180,
+                            "graczid": 44,
+                            "pozycja": "ADC",
+                            "wygrane": 19,
+                            "nickname": "SwordAr",
+                            "przegrane": 15,
+                            "eliminacje": 350
+                        },
+                        {
+                            "zgony": 60,
+                            "asysty": 70,
+                            "graczid": 45,
+                            "pozycja": "Support",
+                            "wygrane": 9,
+                            "nickname": "Zz1tai",
+                            "przegrane": 6,
+                            "eliminacje": 100
+                        }
+                    ],
+                    "druzynaid": 1,
+                    "nazwa_druzyny": "G2 Esports"
+                },
+                {
+                    "gracze": [
+                        {
+                            "zgony": null,
+                            "asysty": null,
+                            "graczid": null,
+                            "pozycja": null,
+                            "wygrane": null,
+                            "nickname": null,
+                            "przegrane": null,
+                            "eliminacje": null
+                        }
+                    ],
+                    "druzynaid": 1,
+                    "nazwa_druzyny": "G2 Esports"
+                },
+                {
+                    "gracze": [
+                        {
+                            "zgony": 190,
+                            "asysty": 280,
+                            "graczid": 6,
+                            "pozycja": "Mid",
+                            "wygrane": 55,
+                            "nickname": "Humanoid",
+                            "przegrane": 25,
+                            "eliminacje": 375
+                        },
+                        {
+                            "zgony": 180,
+                            "asysty": 270,
+                            "graczid": 7,
+                            "pozycja": "ADC",
+                            "wygrane": 56,
+                            "nickname": "Upset",
+                            "przegrane": 24,
+                            "eliminacje": 330
+                        },
+                        {
+                            "zgony": 170,
+                            "asysty": 240,
+                            "graczid": 8,
+                            "pozycja": "Support",
+                            "wygrane": 60,
+                            "nickname": "Hylissang",
+                            "przegrane": 20,
+                            "eliminacje": 290
+                        },
+                        {
+                            "zgony": 190,
+                            "asysty": 220,
+                            "graczid": 9,
+                            "pozycja": "Jungle",
+                            "wygrane": 50,
+                            "nickname": "Razork",
+                            "przegrane": 30,
+                            "eliminacje": 300
+                        },
+                        {
+                            "zgony": 210,
+                            "asysty": 200,
+                            "graczid": 10,
+                            "pozycja": "Top",
+                            "wygrane": 45,
+                            "nickname": "Wunder",
+                            "przegrane": 35,
+                            "eliminacje": 300
+                        }
+                    ],
+                    "druzynaid": 1,
+                    "nazwa_druzyny": "G2 Esports"
+                },
+                {
+                    "gracze": [
+                        {
+                            "zgony": 150,
+                            "asysty": 250,
+                            "graczid": 2,
+                            "pozycja": "ADC",
+                            "wygrane": 60,
+                            "nickname": "Rekkles",
+                            "przegrane": 20,
+                            "eliminacje": 350
+                        },
+                        {
+                            "zgony": 140,
+                            "asysty": 260,
+                            "graczid": 3,
+                            "pozycja": "Support",
+                            "wygrane": 62,
+                            "nickname": "Mikyx",
+                            "przegrane": 18,
+                            "eliminacje": 310
+                        },
+                        {
+                            "zgony": 160,
+                            "asysty": 210,
+                            "graczid": 4,
+                            "pozycja": "Top",
+                            "wygrane": 55,
+                            "nickname": "BrokenBlade",
+                            "przegrane": 25,
+                            "eliminacje": 320
+                        },
+                        {
+                            "zgony": 150,
+                            "asysty": 230,
+                            "graczid": 5,
+                            "pozycja": "Jungle",
+                            "wygrane": 58,
+                            "nickname": "Yike",
+                            "przegrane": 22,
+                            "eliminacje": 280
+                        },
+                        {
+                            "zgony": 200,
+                            "asysty": 300,
+                            "graczid": 1,
+                            "pozycja": "Mid",
+                            "wygrane": 50,
+                            "nickname": "Caps",
+                            "przegrane": 30,
+                            "eliminacje": 400
+                        }
+                    ],
+                    "druzynaid": 1,
+                    "nazwa_druzyny": "G2 Esports"
+                },
+                {
+                    "gracze": [
+                        {
+                            "zgony": 65,
+                            "asysty": 90,
+                            "graczid": 39,
+                            "pozycja": "ADC",
+                            "wygrane": 12,
+                            "nickname": "FoFoMid",
+                            "przegrane": 8,
+                            "eliminacje": 150
+                        },
+                        {
+                            "zgony": 90,
+                            "asysty": 110,
+                            "graczid": 40,
+                            "pozycja": "Mid",
+                            "wygrane": 14,
+                            "nickname": "Wei2Kid",
+                            "przegrane": 10,
+                            "eliminacje": 200
+                        },
+                        {
+                            "zgony": 100,
+                            "asysty": 130,
+                            "graczid": 41,
+                            "pozycja": "Support",
+                            "wygrane": 13,
+                            "nickname": "MingGo",
+                            "przegrane": 11,
+                            "eliminacje": 230
+                        },
+                        {
+                            "zgony": 85,
+                            "asysty": 100,
+                            "graczid": 42,
+                            "pozycja": "Jungle",
+                            "wygrane": 15,
+                            "nickname": "CrispShot",
+                            "przegrane": 9,
+                            "eliminacje": 190
+                        },
+                        {
+                            "zgony": 110,
+                            "asysty": 140,
+                            "graczid": 43,
+                            "pozycja": "Top",
+                            "wygrane": 16,
+                            "nickname": "MorganOne",
+                            "przegrane": 12,
+                            "eliminacje": 240
+                        },
+                        {
+                            "zgony": 150,
+                            "asysty": 180,
+                            "graczid": 44,
+                            "pozycja": "ADC",
+                            "wygrane": 19,
+                            "nickname": "SwordAr",
+                            "przegrane": 15,
+                            "eliminacje": 350
+                        },
+                        {
+                            "zgony": 60,
+                            "asysty": 70,
+                            "graczid": 45,
+                            "pozycja": "Support",
+                            "wygrane": 9,
+                            "nickname": "Zz1tai",
+                            "przegrane": 6,
+                            "eliminacje": 100
+                        }
+                    ],
+                    "druzynaid": 2,
+                    "nazwa_druzyny": "Fnatic"
+                },
+                {
+                    "gracze": [
+                        {
+                            "zgony": null,
+                            "asysty": null,
+                            "graczid": null,
+                            "pozycja": null,
+                            "wygrane": null,
+                            "nickname": null,
+                            "przegrane": null,
+                            "eliminacje": null
+                        }
+                    ],
+                    "druzynaid": 2,
+                    "nazwa_druzyny": "Fnatic"
+                },
+                {
+                    "gracze": [
+                        {
+                            "zgony": 190,
+                            "asysty": 280,
+                            "graczid": 6,
+                            "pozycja": "Mid",
+                            "wygrane": 55,
+                            "nickname": "Humanoid",
+                            "przegrane": 25,
+                            "eliminacje": 375
+                        },
+                        {
+                            "zgony": 180,
+                            "asysty": 270,
+                            "graczid": 7,
+                            "pozycja": "ADC",
+                            "wygrane": 56,
+                            "nickname": "Upset",
+                            "przegrane": 24,
+                            "eliminacje": 330
+                        },
+                        {
+                            "zgony": 170,
+                            "asysty": 240,
+                            "graczid": 8,
+                            "pozycja": "Support",
+                            "wygrane": 60,
+                            "nickname": "Hylissang",
+                            "przegrane": 20,
+                            "eliminacje": 290
+                        },
+                        {
+                            "zgony": 190,
+                            "asysty": 220,
+                            "graczid": 9,
+                            "pozycja": "Jungle",
+                            "wygrane": 50,
+                            "nickname": "Razork",
+                            "przegrane": 30,
+                            "eliminacje": 300
+                        },
+                        {
+                            "zgony": 210,
+                            "asysty": 200,
+                            "graczid": 10,
+                            "pozycja": "Top",
+                            "wygrane": 45,
+                            "nickname": "Wunder",
+                            "przegrane": 35,
+                            "eliminacje": 300
+                        }
+                    ],
+                    "druzynaid": 2,
+                    "nazwa_druzyny": "Fnatic"
+                },
+                {
+                    "gracze": [
+                        {
+                            "zgony": 150,
+                            "asysty": 250,
+                            "graczid": 2,
+                            "pozycja": "ADC",
+                            "wygrane": 60,
+                            "nickname": "Rekkles",
+                            "przegrane": 20,
+                            "eliminacje": 350
+                        },
+                        {
+                            "zgony": 140,
+                            "asysty": 260,
+                            "graczid": 3,
+                            "pozycja": "Support",
+                            "wygrane": 62,
+                            "nickname": "Mikyx",
+                            "przegrane": 18,
+                            "eliminacje": 310
+                        },
+                        {
+                            "zgony": 160,
+                            "asysty": 210,
+                            "graczid": 4,
+                            "pozycja": "Top",
+                            "wygrane": 55,
+                            "nickname": "BrokenBlade",
+                            "przegrane": 25,
+                            "eliminacje": 320
+                        },
+                        {
+                            "zgony": 150,
+                            "asysty": 230,
+                            "graczid": 5,
+                            "pozycja": "Jungle",
+                            "wygrane": 58,
+                            "nickname": "Yike",
+                            "przegrane": 22,
+                            "eliminacje": 280
+                        },
+                        {
+                            "zgony": 200,
+                            "asysty": 300,
+                            "graczid": 1,
+                            "pozycja": "Mid",
+                            "wygrane": 50,
+                            "nickname": "Caps",
+                            "przegrane": 30,
+                            "eliminacje": 400
+                        }
+                    ],
+                    "druzynaid": 2,
+                    "nazwa_druzyny": "Fnatic"
+                },
+                {
+                    "gracze": [
+                        {
+                            "zgony": 65,
+                            "asysty": 90,
+                            "graczid": 39,
+                            "pozycja": "ADC",
+                            "wygrane": 12,
+                            "nickname": "FoFoMid",
+                            "przegrane": 8,
+                            "eliminacje": 150
+                        },
+                        {
+                            "zgony": 90,
+                            "asysty": 110,
+                            "graczid": 40,
+                            "pozycja": "Mid",
+                            "wygrane": 14,
+                            "nickname": "Wei2Kid",
+                            "przegrane": 10,
+                            "eliminacje": 200
+                        },
+                        {
+                            "zgony": 100,
+                            "asysty": 130,
+                            "graczid": 41,
+                            "pozycja": "Support",
+                            "wygrane": 13,
+                            "nickname": "MingGo",
+                            "przegrane": 11,
+                            "eliminacje": 230
+                        },
+                        {
+                            "zgony": 85,
+                            "asysty": 100,
+                            "graczid": 42,
+                            "pozycja": "Jungle",
+                            "wygrane": 15,
+                            "nickname": "CrispShot",
+                            "przegrane": 9,
+                            "eliminacje": 190
+                        },
+                        {
+                            "zgony": 110,
+                            "asysty": 140,
+                            "graczid": 43,
+                            "pozycja": "Top",
+                            "wygrane": 16,
+                            "nickname": "MorganOne",
+                            "przegrane": 12,
+                            "eliminacje": 240
+                        },
+                        {
+                            "zgony": 150,
+                            "asysty": 180,
+                            "graczid": 44,
+                            "pozycja": "ADC",
+                            "wygrane": 19,
+                            "nickname": "SwordAr",
+                            "przegrane": 15,
+                            "eliminacje": 350
+                        },
+                        {
+                            "zgony": 60,
+                            "asysty": 70,
+                            "graczid": 45,
+                            "pozycja": "Support",
+                            "wygrane": 9,
+                            "nickname": "Zz1tai",
+                            "przegrane": 6,
+                            "eliminacje": 100
+                        }
+                    ],
+                    "druzynaid": 8,
+                    "nazwa_druzyny": "g4"
+                },
+                {
+                    "gracze": [
+                        {
+                            "zgony": null,
+                            "asysty": null,
+                            "graczid": null,
+                            "pozycja": null,
+                            "wygrane": null,
+                            "nickname": null,
+                            "przegrane": null,
+                            "eliminacje": null
+                        }
+                    ],
+                    "druzynaid": 8,
+                    "nazwa_druzyny": "g4"
+                },
+                {
+                    "gracze": [
+                        {
+                            "zgony": 190,
+                            "asysty": 280,
+                            "graczid": 6,
+                            "pozycja": "Mid",
+                            "wygrane": 55,
+                            "nickname": "Humanoid",
+                            "przegrane": 25,
+                            "eliminacje": 375
+                        },
+                        {
+                            "zgony": 180,
+                            "asysty": 270,
+                            "graczid": 7,
+                            "pozycja": "ADC",
+                            "wygrane": 56,
+                            "nickname": "Upset",
+                            "przegrane": 24,
+                            "eliminacje": 330
+                        },
+                        {
+                            "zgony": 170,
+                            "asysty": 240,
+                            "graczid": 8,
+                            "pozycja": "Support",
+                            "wygrane": 60,
+                            "nickname": "Hylissang",
+                            "przegrane": 20,
+                            "eliminacje": 290
+                        },
+                        {
+                            "zgony": 190,
+                            "asysty": 220,
+                            "graczid": 9,
+                            "pozycja": "Jungle",
+                            "wygrane": 50,
+                            "nickname": "Razork",
+                            "przegrane": 30,
+                            "eliminacje": 300
+                        },
+                        {
+                            "zgony": 210,
+                            "asysty": 200,
+                            "graczid": 10,
+                            "pozycja": "Top",
+                            "wygrane": 45,
+                            "nickname": "Wunder",
+                            "przegrane": 35,
+                            "eliminacje": 300
+                        }
+                    ],
+                    "druzynaid": 8,
+                    "nazwa_druzyny": "g4"
+                },
+                {
+                    "gracze": [
+                        {
+                            "zgony": 150,
+                            "asysty": 250,
+                            "graczid": 2,
+                            "pozycja": "ADC",
+                            "wygrane": 60,
+                            "nickname": "Rekkles",
+                            "przegrane": 20,
+                            "eliminacje": 350
+                        },
+                        {
+                            "zgony": 140,
+                            "asysty": 260,
+                            "graczid": 3,
+                            "pozycja": "Support",
+                            "wygrane": 62,
+                            "nickname": "Mikyx",
+                            "przegrane": 18,
+                            "eliminacje": 310
+                        },
+                        {
+                            "zgony": 160,
+                            "asysty": 210,
+                            "graczid": 4,
+                            "pozycja": "Top",
+                            "wygrane": 55,
+                            "nickname": "BrokenBlade",
+                            "przegrane": 25,
+                            "eliminacje": 320
+                        },
+                        {
+                            "zgony": 150,
+                            "asysty": 230,
+                            "graczid": 5,
+                            "pozycja": "Jungle",
+                            "wygrane": 58,
+                            "nickname": "Yike",
+                            "przegrane": 22,
+                            "eliminacje": 280
+                        },
+                        {
+                            "zgony": 200,
+                            "asysty": 300,
+                            "graczid": 1,
+                            "pozycja": "Mid",
+                            "wygrane": 50,
+                            "nickname": "Caps",
+                            "przegrane": 30,
+                            "eliminacje": 400
+                        }
+                    ],
+                    "druzynaid": 8,
+                    "nazwa_druzyny": "g4"
+                },
+                {
+                    "gracze": [
+                        {
+                            "zgony": 65,
+                            "asysty": 90,
+                            "graczid": 39,
+                            "pozycja": "ADC",
+                            "wygrane": 12,
+                            "nickname": "FoFoMid",
+                            "przegrane": 8,
+                            "eliminacje": 150
+                        },
+                        {
+                            "zgony": 90,
+                            "asysty": 110,
+                            "graczid": 40,
+                            "pozycja": "Mid",
+                            "wygrane": 14,
+                            "nickname": "Wei2Kid",
+                            "przegrane": 10,
+                            "eliminacje": 200
+                        },
+                        {
+                            "zgony": 100,
+                            "asysty": 130,
+                            "graczid": 41,
+                            "pozycja": "Support",
+                            "wygrane": 13,
+                            "nickname": "MingGo",
+                            "przegrane": 11,
+                            "eliminacje": 230
+                        },
+                        {
+                            "zgony": 85,
+                            "asysty": 100,
+                            "graczid": 42,
+                            "pozycja": "Jungle",
+                            "wygrane": 15,
+                            "nickname": "CrispShot",
+                            "przegrane": 9,
+                            "eliminacje": 190
+                        },
+                        {
+                            "zgony": 110,
+                            "asysty": 140,
+                            "graczid": 43,
+                            "pozycja": "Top",
+                            "wygrane": 16,
+                            "nickname": "MorganOne",
+                            "przegrane": 12,
+                            "eliminacje": 240
+                        },
+                        {
+                            "zgony": 150,
+                            "asysty": 180,
+                            "graczid": 44,
+                            "pozycja": "ADC",
+                            "wygrane": 19,
+                            "nickname": "SwordAr",
+                            "przegrane": 15,
+                            "eliminacje": 350
+                        },
+                        {
+                            "zgony": 60,
+                            "asysty": 70,
+                            "graczid": 45,
+                            "pozycja": "Support",
+                            "wygrane": 9,
+                            "nickname": "Zz1tai",
+                            "przegrane": 6,
+                            "eliminacje": 100
+                        }
+                    ],
+                    "druzynaid": 15,
+                    "nazwa_druzyny": "Pomidor"
+                },
+                {
+                    "gracze": [
+                        {
+                            "zgony": null,
+                            "asysty": null,
+                            "graczid": null,
+                            "pozycja": null,
+                            "wygrane": null,
+                            "nickname": null,
+                            "przegrane": null,
+                            "eliminacje": null
+                        }
+                    ],
+                    "druzynaid": 15,
+                    "nazwa_druzyny": "Pomidor"
+                },
+                {
+                    "gracze": [
+                        {
+                            "zgony": 190,
+                            "asysty": 280,
+                            "graczid": 6,
+                            "pozycja": "Mid",
+                            "wygrane": 55,
+                            "nickname": "Humanoid",
+                            "przegrane": 25,
+                            "eliminacje": 375
+                        },
+                        {
+                            "zgony": 180,
+                            "asysty": 270,
+                            "graczid": 7,
+                            "pozycja": "ADC",
+                            "wygrane": 56,
+                            "nickname": "Upset",
+                            "przegrane": 24,
+                            "eliminacje": 330
+                        },
+                        {
+                            "zgony": 170,
+                            "asysty": 240,
+                            "graczid": 8,
+                            "pozycja": "Support",
+                            "wygrane": 60,
+                            "nickname": "Hylissang",
+                            "przegrane": 20,
+                            "eliminacje": 290
+                        },
+                        {
+                            "zgony": 190,
+                            "asysty": 220,
+                            "graczid": 9,
+                            "pozycja": "Jungle",
+                            "wygrane": 50,
+                            "nickname": "Razork",
+                            "przegrane": 30,
+                            "eliminacje": 300
+                        },
+                        {
+                            "zgony": 210,
+                            "asysty": 200,
+                            "graczid": 10,
+                            "pozycja": "Top",
+                            "wygrane": 45,
+                            "nickname": "Wunder",
+                            "przegrane": 35,
+                            "eliminacje": 300
+                        }
+                    ],
+                    "druzynaid": 15,
+                    "nazwa_druzyny": "Pomidor"
+                },
+                {
+                    "gracze": [
+                        {
+                            "zgony": 150,
+                            "asysty": 250,
+                            "graczid": 2,
+                            "pozycja": "ADC",
+                            "wygrane": 60,
+                            "nickname": "Rekkles",
+                            "przegrane": 20,
+                            "eliminacje": 350
+                        },
+                        {
+                            "zgony": 140,
+                            "asysty": 260,
+                            "graczid": 3,
+                            "pozycja": "Support",
+                            "wygrane": 62,
+                            "nickname": "Mikyx",
+                            "przegrane": 18,
+                            "eliminacje": 310
+                        },
+                        {
+                            "zgony": 160,
+                            "asysty": 210,
+                            "graczid": 4,
+                            "pozycja": "Top",
+                            "wygrane": 55,
+                            "nickname": "BrokenBlade",
+                            "przegrane": 25,
+                            "eliminacje": 320
+                        },
+                        {
+                            "zgony": 150,
+                            "asysty": 230,
+                            "graczid": 5,
+                            "pozycja": "Jungle",
+                            "wygrane": 58,
+                            "nickname": "Yike",
+                            "przegrane": 22,
+                            "eliminacje": 280
+                        },
+                        {
+                            "zgony": 200,
+                            "asysty": 300,
+                            "graczid": 1,
+                            "pozycja": "Mid",
+                            "wygrane": 50,
+                            "nickname": "Caps",
+                            "przegrane": 30,
+                            "eliminacje": 400
+                        }
+                    ],
+                    "druzynaid": 15,
+                    "nazwa_druzyny": "Pomidor"
+                }
+            ],
+            "regionid": 1,
+            "nazwa_regionu": "Europe"
+        },
+        "turnieje": [
+            {
+                "data": "2023-10-15",
+                "adres": "Busan, South Korea",
+                "rodzaj": "International",
+                "regionid": 3,
+                "turniejid": 1,
+                "organizator": "Riot Games",
+                "region_nazwa": "South Korea",
+                "nazwaturnieju": "World Championship"
+            },
+            {
+                "data": "2023-05-20",
+                "adres": "Shanghai, China",
+                "rodzaj": "International",
+                "regionid": 4,
+                "turniejid": 2,
+                "organizator": "Riot Games",
+                "region_nazwa": "China",
+                "nazwaturnieju": "MSI"
+            },
+            {
+                "data": "2023-08-10",
+                "adres": "Berlin, Germany",
+                "rodzaj": "Regional",
+                "regionid": 1,
+                "turniejid": 3,
+                "organizator": "Riot Games",
+                "region_nazwa": "Europe",
+                "nazwaturnieju": "LEC Finals"
+            },
+            {
+                "data": "2023-09-05",
+                "adres": "Los Angeles, USA",
+                "rodzaj": "Regional",
+                "regionid": 2,
+                "turniejid": 4,
+                "organizator": "Riot Games",
+                "region_nazwa": "North America",
+                "nazwaturnieju": "LCS Finals"
+            },
+            {
+                "data": "2023-11-01",
+                "adres": "São Paulo, Brazil",
+                "rodzaj": "Regional",
+                "regionid": 5,
+                "turniejid": 5,
+                "organizator": "Riot Games",
+                "region_nazwa": "Brazil",
+                "nazwaturnieju": "CBLOL Finals"
+            },
+            {
+                "data": "2025-01-19",
+                "adres": "asd",
+                "rodzaj": "asd",
+                "regionid": 2,
+                "turniejid": 6,
+                "organizator": "asd",
+                "region_nazwa": "North America",
+                "nazwaturnieju": "asd"
+            }
+        ]
+    },
+    {
+        "regiony": {
+            "skrot": "KR",
+            "druzyny": [
+                {
+                    "gracze": [
+                        {
+                            "zgony": 100,
+                            "asysty": 130,
+                            "graczid": 18,
+                            "pozycja": "Mid",
+                            "wygrane": 14,
+                            "nickname": "JackeyLov",
+                            "przegrane": 10,
+                            "eliminacje": 210
+                        },
+                        {
+                            "zgony": 80,
+                            "asysty": 90,
+                            "graczid": 19,
+                            "pozycja": "ADC",
+                            "wygrane": 12,
+                            "nickname": "Clearluv",
+                            "przegrane": 11,
+                            "eliminacje": 200
+                        },
+                        {
+                            "zgony": 140,
+                            "asysty": 120,
+                            "graczid": 20,
+                            "pozycja": "Jungle",
+                            "wygrane": 18,
+                            "nickname": "SofMlol",
+                            "przegrane": 14,
+                            "eliminacje": 310
+                        },
+                        {
+                            "zgony": 85,
+                            "asysty": 100,
+                            "graczid": 21,
+                            "pozycja": "Support",
+                            "wygrane": 9,
+                            "nickname": "UziTheBest",
+                            "przegrane": 7,
+                            "eliminacje": 140
+                        },
+                        {
+                            "zgony": 120,
+                            "asysty": 140,
+                            "graczid": 22,
+                            "pozycja": "Top",
+                            "wygrane": 14,
+                            "nickname": "CoreJJ99",
+                            "przegrane": 12,
+                            "eliminacje": 250
+                        },
+                        {
+                            "zgony": 90,
+                            "asysty": 130,
+                            "graczid": 23,
+                            "pozycja": "ADC",
+                            "wygrane": 13,
+                            "nickname": "Bo1Bolt",
+                            "przegrane": 9,
+                            "eliminacje": 180
+                        },
+                        {
+                            "zgony": 95,
+                            "asysty": 80,
+                            "graczid": 24,
+                            "pozycja": "Support",
+                            "wygrane": 12,
+                            "nickname": "Amb1tion",
+                            "przegrane": 10,
+                            "eliminacje": 190
+                        }
+                    ],
+                    "druzynaid": 4,
+                    "nazwa_druzyny": "T1"
+                }
+            ],
+            "regionid": 3,
+            "nazwa_regionu": "South Korea"
+        },
+        "turnieje": [
+            {
+                "data": "2023-10-15",
+                "adres": "Busan, South Korea",
+                "rodzaj": "International",
+                "regionid": 3,
+                "turniejid": 1,
+                "organizator": "Riot Games",
+                "region_nazwa": "South Korea",
+                "nazwaturnieju": "World Championship"
+            },
+            {
+                "data": "2023-05-20",
+                "adres": "Shanghai, China",
+                "rodzaj": "International",
+                "regionid": 4,
+                "turniejid": 2,
+                "organizator": "Riot Games",
+                "region_nazwa": "China",
+                "nazwaturnieju": "MSI"
+            },
+            {
+                "data": "2023-08-10",
+                "adres": "Berlin, Germany",
+                "rodzaj": "Regional",
+                "regionid": 1,
+                "turniejid": 3,
+                "organizator": "Riot Games",
+                "region_nazwa": "Europe",
+                "nazwaturnieju": "LEC Finals"
+            },
+            {
+                "data": "2023-09-05",
+                "adres": "Los Angeles, USA",
+                "rodzaj": "Regional",
+                "regionid": 2,
+                "turniejid": 4,
+                "organizator": "Riot Games",
+                "region_nazwa": "North America",
+                "nazwaturnieju": "LCS Finals"
+            },
+            {
+                "data": "2023-11-01",
+                "adres": "São Paulo, Brazil",
+                "rodzaj": "Regional",
+                "regionid": 5,
+                "turniejid": 5,
+                "organizator": "Riot Games",
+                "region_nazwa": "Brazil",
+                "nazwaturnieju": "CBLOL Finals"
+            },
+            {
+                "data": "2025-01-19",
+                "adres": "asd",
+                "rodzaj": "asd",
+                "regionid": 2,
+                "turniejid": 6,
+                "organizator": "asd",
+                "region_nazwa": "North America",
+                "nazwaturnieju": "asd"
+            }
+        ]
+    },
+    {
+        "regiony": {
+            "skrot": "BR",
+            "druzyny": [
+                {
+                    "gracze": [
+                        {
+                            "zgony": 110,
+                            "asysty": 150,
+                            "graczid": 32,
+                            "pozycja": "Mid",
+                            "wygrane": 17,
+                            "nickname": "ZyLord",
+                            "przegrane": 12,
+                            "eliminacje": 270
+                        },
+                        {
+                            "zgony": 70,
+                            "asysty": 100,
+                            "graczid": 33,
+                            "pozycja": "Support",
+                            "wygrane": 11,
+                            "nickname": "DoinbgX",
+                            "przegrane": 7,
+                            "eliminacje": 120
+                        },
+                        {
+                            "zgony": 90,
+                            "asysty": 110,
+                            "graczid": 34,
+                            "pozycja": "Top",
+                            "wygrane": 13,
+                            "nickname": "LightNice",
+                            "przegrane": 10,
+                            "eliminacje": 220
+                        },
+                        {
+                            "zgony": 100,
+                            "asysty": 130,
+                            "graczid": 35,
+                            "pozycja": "ADC",
+                            "wygrane": 14,
+                            "nickname": "FlandreX",
+                            "przegrane": 11,
+                            "eliminacje": 210
+                        },
+                        {
+                            "zgony": 140,
+                            "asysty": 160,
+                            "graczid": 36,
+                            "pozycja": "Jungle",
+                            "wygrane": 19,
+                            "nickname": "AlphariLol",
+                            "przegrane": 14,
+                            "eliminacje": 340
+                        },
+                        {
+                            "zgony": 80,
+                            "asysty": 85,
+                            "graczid": 37,
+                            "pozycja": "ADC",
+                            "wygrane": 15,
+                            "nickname": "Dest1ny",
+                            "przegrane": 9,
+                            "eliminacje": 170
+                        },
+                        {
+                            "zgony": 120,
+                            "asysty": 100,
+                            "graczid": 38,
+                            "pozycja": "Support",
+                            "wygrane": 15,
+                            "nickname": "PowerVev0",
+                            "przegrane": 13,
+                            "eliminacje": 250
+                        }
+                    ],
+                    "druzynaid": 6,
+                    "nazwa_druzyny": "paiN Gaming"
+                }
+            ],
+            "regionid": 5,
+            "nazwa_regionu": "Brazil"
+        },
+        "turnieje": [
+            {
+                "data": "2023-10-15",
+                "adres": "Busan, South Korea",
+                "rodzaj": "International",
+                "regionid": 3,
+                "turniejid": 1,
+                "organizator": "Riot Games",
+                "region_nazwa": "South Korea",
+                "nazwaturnieju": "World Championship"
+            },
+            {
+                "data": "2023-05-20",
+                "adres": "Shanghai, China",
+                "rodzaj": "International",
+                "regionid": 4,
+                "turniejid": 2,
+                "organizator": "Riot Games",
+                "region_nazwa": "China",
+                "nazwaturnieju": "MSI"
+            },
+            {
+                "data": "2023-08-10",
+                "adres": "Berlin, Germany",
+                "rodzaj": "Regional",
+                "regionid": 1,
+                "turniejid": 3,
+                "organizator": "Riot Games",
+                "region_nazwa": "Europe",
+                "nazwaturnieju": "LEC Finals"
+            },
+            {
+                "data": "2023-09-05",
+                "adres": "Los Angeles, USA",
+                "rodzaj": "Regional",
+                "regionid": 2,
+                "turniejid": 4,
+                "organizator": "Riot Games",
+                "region_nazwa": "North America",
+                "nazwaturnieju": "LCS Finals"
+            },
+            {
+                "data": "2023-11-01",
+                "adres": "São Paulo, Brazil",
+                "rodzaj": "Regional",
+                "regionid": 5,
+                "turniejid": 5,
+                "organizator": "Riot Games",
+                "region_nazwa": "Brazil",
+                "nazwaturnieju": "CBLOL Finals"
+            },
+            {
+                "data": "2025-01-19",
+                "adres": "asd",
+                "rodzaj": "asd",
+                "regionid": 2,
+                "turniejid": 6,
+                "organizator": "asd",
+                "region_nazwa": "North America",
+                "nazwaturnieju": "asd"
+            }
+        ]
+    },
+    {
+        "regiony": {
+            "skrot": "CN",
+            "druzyny": [
+                {
+                    "gracze": [
+                        {
+                            "zgony": 140,
+                            "asysty": 150,
+                            "graczid": 25,
+                            "pozycja": "Top",
+                            "wygrane": 20,
+                            "nickname": "BeryLl",
+                            "przegrane": 15,
+                            "eliminacje": 320
+                        },
+                        {
+                            "zgony": 75,
+                            "asysty": 100,
+                            "graczid": 26,
+                            "pozycja": "ADC",
+                            "wygrane": 11,
+                            "nickname": "TianGG",
+                            "przegrane": 9,
+                            "eliminacje": 170
+                        },
+                        {
+                            "zgony": 65,
+                            "asysty": 70,
+                            "graczid": 27,
+                            "pozycja": "Support",
+                            "wygrane": 10,
+                            "nickname": "NuguriPro",
+                            "przegrane": 6,
+                            "eliminacje": 120
+                        },
+                        {
+                            "zgony": 110,
+                            "asysty": 140,
+                            "graczid": 28,
+                            "pozycja": "Mid",
+                            "wygrane": 16,
+                            "nickname": "GhostShot",
+                            "przegrane": 12,
+                            "eliminacje": 240
+                        },
+                        {
+                            "zgony": 100,
+                            "asysty": 130,
+                            "graczid": 29,
+                            "pozycja": "Jungle",
+                            "wygrane": 12,
+                            "nickname": "ShowTime",
+                            "przegrane": 11,
+                            "eliminacje": 220
+                        },
+                        {
+                            "zgony": 95,
+                            "asysty": 120,
+                            "graczid": 30,
+                            "pozycja": "ADC",
+                            "wygrane": 13,
+                            "nickname": "ZekaOne",
+                            "przegrane": 10,
+                            "eliminacje": 190
+                        },
+                        {
+                            "zgony": 85,
+                            "asysty": 90,
+                            "graczid": 31,
+                            "pozycja": "Top",
+                            "wygrane": 14,
+                            "nickname": "MadaCarr",
+                            "przegrane": 8,
+                            "eliminacje": 200
+                        }
+                    ],
+                    "druzynaid": 5,
+                    "nazwa_druzyny": "EDward Gaming"
+                }
+            ],
+            "regionid": 4,
+            "nazwa_regionu": "China"
+        },
+        "turnieje": [
+            {
+                "data": "2023-10-15",
+                "adres": "Busan, South Korea",
+                "rodzaj": "International",
+                "regionid": 3,
+                "turniejid": 1,
+                "organizator": "Riot Games",
+                "region_nazwa": "South Korea",
+                "nazwaturnieju": "World Championship"
+            },
+            {
+                "data": "2023-05-20",
+                "adres": "Shanghai, China",
+                "rodzaj": "International",
+                "regionid": 4,
+                "turniejid": 2,
+                "organizator": "Riot Games",
+                "region_nazwa": "China",
+                "nazwaturnieju": "MSI"
+            },
+            {
+                "data": "2023-08-10",
+                "adres": "Berlin, Germany",
+                "rodzaj": "Regional",
+                "regionid": 1,
+                "turniejid": 3,
+                "organizator": "Riot Games",
+                "region_nazwa": "Europe",
+                "nazwaturnieju": "LEC Finals"
+            },
+            {
+                "data": "2023-09-05",
+                "adres": "Los Angeles, USA",
+                "rodzaj": "Regional",
+                "regionid": 2,
+                "turniejid": 4,
+                "organizator": "Riot Games",
+                "region_nazwa": "North America",
+                "nazwaturnieju": "LCS Finals"
+            },
+            {
+                "data": "2023-11-01",
+                "adres": "São Paulo, Brazil",
+                "rodzaj": "Regional",
+                "regionid": 5,
+                "turniejid": 5,
+                "organizator": "Riot Games",
+                "region_nazwa": "Brazil",
+                "nazwaturnieju": "CBLOL Finals"
+            },
+            {
+                "data": "2025-01-19",
+                "adres": "asd",
+                "rodzaj": "asd",
+                "regionid": 2,
+                "turniejid": 6,
+                "organizator": "asd",
+                "region_nazwa": "North America",
+                "nazwaturnieju": "asd"
+            }
+        ]
+    },
+    {
+        "regiony": {
+            "skrot": "NA",
+            "druzyny": [
+                {
+                    "gracze": [
+                        {
+                            "zgony": 85,
+                            "asysty": 130,
+                            "graczid": 11,
+                            "pozycja": "Top",
+                            "wygrane": 15,
+                            "nickname": "WunderKid",
+                            "przegrane": 8,
+                            "eliminacje": 180
+                        },
+                        {
+                            "zgony": 100,
+                            "asysty": 120,
+                            "graczid": 12,
+                            "pozycja": "Jungle",
+                            "wygrane": 16,
+                            "nickname": "Jankz",
+                            "przegrane": 12,
+                            "eliminacje": 220
+                        },
+                        {
+                            "zgony": 80,
+                            "asysty": 90,
+                            "graczid": 13,
+                            "pozycja": "ADC",
+                            "wygrane": 10,
+                            "nickname": "RookieOne",
+                            "przegrane": 10,
+                            "eliminacje": 160
+                        },
+                        {
+                            "zgony": 90,
+                            "asysty": 100,
+                            "graczid": 14,
+                            "pozycja": "Support",
+                            "wygrane": 14,
+                            "nickname": "ScoutAr",
+                            "przegrane": 9,
+                            "eliminacje": 190
+                        },
+                        {
+                            "zgony": 110,
+                            "asysty": 150,
+                            "graczid": 15,
+                            "pozycja": "Mid",
+                            "wygrane": 15,
+                            "nickname": "MakNoonX",
+                            "przegrane": 14,
+                            "eliminacje": 240
+                        },
+                        {
+                            "zgony": 130,
+                            "asysty": 100,
+                            "graczid": 16,
+                            "pozycja": "Top",
+                            "wygrane": 16,
+                            "nickname": "SvenskPro",
+                            "przegrane": 15,
+                            "eliminacje": 300
+                        },
+                        {
+                            "zgony": 60,
+                            "asysty": 80,
+                            "graczid": 17,
+                            "pozycja": "ADC",
+                            "wygrane": 10,
+                            "nickname": "DeftShot",
+                            "przegrane": 8,
+                            "eliminacje": 120
+                        }
+                    ],
+                    "druzynaid": 3,
+                    "nazwa_druzyny": "Team Liquid"
+                }
+            ],
+            "regionid": 2,
+            "nazwa_regionu": "North America"
+        },
+        "turnieje": [
+            {
+                "data": "2023-10-15",
+                "adres": "Busan, South Korea",
+                "rodzaj": "International",
+                "regionid": 3,
+                "turniejid": 1,
+                "organizator": "Riot Games",
+                "region_nazwa": "South Korea",
+                "nazwaturnieju": "World Championship"
+            },
+            {
+                "data": "2023-05-20",
+                "adres": "Shanghai, China",
+                "rodzaj": "International",
+                "regionid": 4,
+                "turniejid": 2,
+                "organizator": "Riot Games",
+                "region_nazwa": "China",
+                "nazwaturnieju": "MSI"
+            },
+            {
+                "data": "2023-08-10",
+                "adres": "Berlin, Germany",
+                "rodzaj": "Regional",
+                "regionid": 1,
+                "turniejid": 3,
+                "organizator": "Riot Games",
+                "region_nazwa": "Europe",
+                "nazwaturnieju": "LEC Finals"
+            },
+            {
+                "data": "2023-09-05",
+                "adres": "Los Angeles, USA",
+                "rodzaj": "Regional",
+                "regionid": 2,
+                "turniejid": 4,
+                "organizator": "Riot Games",
+                "region_nazwa": "North America",
+                "nazwaturnieju": "LCS Finals"
+            },
+            {
+                "data": "2023-11-01",
+                "adres": "São Paulo, Brazil",
+                "rodzaj": "Regional",
+                "regionid": 5,
+                "turniejid": 5,
+                "organizator": "Riot Games",
+                "region_nazwa": "Brazil",
+                "nazwaturnieju": "CBLOL Finals"
+            },
+            {
+                "data": "2025-01-19",
+                "adres": "asd",
+                "rodzaj": "asd",
+                "regionid": 2,
+                "turniejid": 6,
+                "organizator": "asd",
+                "region_nazwa": "North America",
+                "nazwaturnieju": "asd"
+            }
+        ]
+    }
+]
