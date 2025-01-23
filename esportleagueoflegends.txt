@@ -1,0 +1,2217 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 17.2
+-- Dumped by pg_dump version 17.1
+
+-- Started on 2025-01-20 23:10:20
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 6 (class 2615 OID 17063)
+-- Name: esportleagueoflegends; Type: SCHEMA; Schema: -; Owner: postgres
+--
+
+CREATE SCHEMA esportleagueoflegends;
+
+
+ALTER SCHEMA esportleagueoflegends OWNER TO postgres;
+
+--
+-- TOC entry 256 (class 1255 OID 17064)
+-- Name: dodajdruzyne(character varying, integer); Type: PROCEDURE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE PROCEDURE esportleagueoflegends.dodajdruzyne(IN p_nazwa character varying, IN p_regionid integer)
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    INSERT INTO EsportLeagueOfLegends.Druzyny (Nazwa, RegionID)
+    VALUES (p_Nazwa, p_RegionID);
+END;
+$$;
+
+
+ALTER PROCEDURE esportleagueoflegends.dodajdruzyne(IN p_nazwa character varying, IN p_regionid integer) OWNER TO postgres;
+
+--
+-- TOC entry 238 (class 1255 OID 17065)
+-- Name: dodajgracza(character varying, integer, character varying); Type: PROCEDURE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE PROCEDURE esportleagueoflegends.dodajgracza(IN p_nickname character varying, IN p_druzynaid integer, IN p_pozycja character varying)
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    INSERT INTO EsportLeagueOfLegends.Gracze (Nickname, DruzynaID, Pozycja)
+    VALUES (p_Nickname, p_DruzynaID, p_Pozycja);
+END;
+$$;
+
+
+ALTER PROCEDURE esportleagueoflegends.dodajgracza(IN p_nickname character varying, IN p_druzynaid integer, IN p_pozycja character varying) OWNER TO postgres;
+
+--
+-- TOC entry 239 (class 1255 OID 17066)
+-- Name: dodajkomentatora(character varying, character varying, character varying); Type: PROCEDURE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE PROCEDURE esportleagueoflegends.dodajkomentatora(IN p_imie character varying, IN p_nazwisko character varying, IN p_nickname character varying)
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    INSERT INTO esportleagueoflegends.komentatorzy (imie, nazwisko, nickname)
+    VALUES (p_imie, p_nazwisko, p_nickname);
+END;
+$$;
+
+
+ALTER PROCEDURE esportleagueoflegends.dodajkomentatora(IN p_imie character varying, IN p_nazwisko character varying, IN p_nickname character varying) OWNER TO postgres;
+
+--
+-- TOC entry 240 (class 1255 OID 17067)
+-- Name: dodajmecz(integer, integer); Type: PROCEDURE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE PROCEDURE esportleagueoflegends.dodajmecz(IN p_komentatorid integer, IN p_turniejid integer)
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    INSERT INTO EsportLeagueOfLegends.Mecze (KomentatorID, TurniejID)
+    VALUES (p_KomentatorID, p_TurniejID);
+END;
+$$;
+
+
+ALTER PROCEDURE esportleagueoflegends.dodajmecz(IN p_komentatorid integer, IN p_turniejid integer) OWNER TO postgres;
+
+--
+-- TOC entry 257 (class 1255 OID 17248)
+-- Name: dodajpostac(character varying); Type: PROCEDURE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE PROCEDURE esportleagueoflegends.dodajpostac(IN p_nazwa character varying)
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    INSERT INTO EsportLeagueOfLegends.Postacie (Nazwa)
+    VALUES (p_Nazwa);
+END;
+$$;
+
+
+ALTER PROCEDURE esportleagueoflegends.dodajpostac(IN p_nazwa character varying) OWNER TO postgres;
+
+--
+-- TOC entry 241 (class 1255 OID 17069)
+-- Name: dodajregion(character varying, character varying); Type: PROCEDURE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE PROCEDURE esportleagueoflegends.dodajregion(IN p_nazwa character varying, IN p_skrot character varying)
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    INSERT INTO EsportLeagueOfLegends.Regiony (Nazwa, Skrot)
+    VALUES (p_Nazwa, p_Skrot);
+END;
+$$;
+
+
+ALTER PROCEDURE esportleagueoflegends.dodajregion(IN p_nazwa character varying, IN p_skrot character varying) OWNER TO postgres;
+
+--
+-- TOC entry 296 (class 1255 OID 17268)
+-- Name: dodajtransfer(integer, integer, integer); Type: PROCEDURE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE PROCEDURE esportleagueoflegends.dodajtransfer(IN p_graczid integer, IN p_druzyna1 integer, IN p_druzyna2 integer)
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    INSERT INTO EsportLeagueOfLegends.Transfery (GraczID, Druzyna1, Druzyna2)
+    VALUES (p_GraczID, p_Druzyna1, p_Druzyna2);
+END;
+$$;
+
+
+ALTER PROCEDURE esportleagueoflegends.dodajtransfer(IN p_graczid integer, IN p_druzyna1 integer, IN p_druzyna2 integer) OWNER TO postgres;
+
+--
+-- TOC entry 242 (class 1255 OID 17071)
+-- Name: dodajtrenera(character varying, character varying, integer); Type: PROCEDURE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE PROCEDURE esportleagueoflegends.dodajtrenera(IN p_imie character varying, IN p_nazwisko character varying, IN p_druzynaid integer)
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    INSERT INTO EsportLeagueOfLegends.Trenerzy (Imie, Nazwisko, DruzynaID)
+    VALUES (p_Imie, p_Nazwisko, p_DruzynaID);
+END;
+$$;
+
+
+ALTER PROCEDURE esportleagueoflegends.dodajtrenera(IN p_imie character varying, IN p_nazwisko character varying, IN p_druzynaid integer) OWNER TO postgres;
+
+--
+-- TOC entry 303 (class 1255 OID 17278)
+-- Name: dodajturniej(character varying, character varying, character varying, character varying, integer, timestamp without time zone); Type: PROCEDURE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE PROCEDURE esportleagueoflegends.dodajturniej(IN p_nazwaturnieju character varying, IN p_rodzaj character varying, IN p_organizator character varying, IN p_adres character varying, IN p_regionid integer, IN p_data timestamp without time zone)
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    INSERT INTO EsportLeagueOfLegends.Turnieje (NazwaTurnieju, Rodzaj, Organizator, Adres, RegionID, Data)
+    VALUES (p_NazwaTurnieju, p_Rodzaj, p_Organizator, p_Adres, p_RegionID, p_Data);
+END;
+$$;
+
+
+ALTER PROCEDURE esportleagueoflegends.dodajturniej(IN p_nazwaturnieju character varying, IN p_rodzaj character varying, IN p_organizator character varying, IN p_adres character varying, IN p_regionid integer, IN p_data timestamp without time zone) OWNER TO postgres;
+
+--
+-- TOC entry 244 (class 1255 OID 17073)
+-- Name: edytujdruzyne(integer, character varying, integer); Type: PROCEDURE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE PROCEDURE esportleagueoflegends.edytujdruzyne(IN p_druzynaid integer, IN p_nazwa character varying, IN p_regionid integer)
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    UPDATE EsportLeagueOfLegends.Druzyny
+    SET Nazwa = p_Nazwa, RegionID = p_RegionID
+    WHERE DruzynaID = p_DruzynaID;
+END;
+$$;
+
+
+ALTER PROCEDURE esportleagueoflegends.edytujdruzyne(IN p_druzynaid integer, IN p_nazwa character varying, IN p_regionid integer) OWNER TO postgres;
+
+--
+-- TOC entry 298 (class 1255 OID 17274)
+-- Name: edytujgracza(integer, character varying, integer, character varying, integer, integer, integer, integer, integer); Type: PROCEDURE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE PROCEDURE esportleagueoflegends.edytujgracza(IN p_graczid integer, IN p_nickname character varying, IN p_druzynaid integer, IN p_pozycja character varying, IN p_przegrane integer, IN p_wygrane integer, IN p_eliminacje integer, IN p_asysty integer, IN p_zgony integer)
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    UPDATE EsportLeagueOfLegends.Gracze
+    SET Nickname = p_Nickname, DruzynaID = p_DruzynaID, Pozycja = p_Pozycja,
+		Przegrane = p_Przegrane,
+        Wygrane = p_Wygrane,
+        Eliminacje = p_Eliminacje,
+        Asysty = p_Asysty,
+        Zgony = p_Zgony
+    WHERE GraczID = p_GraczID;
+END;
+$$;
+
+
+ALTER PROCEDURE esportleagueoflegends.edytujgracza(IN p_graczid integer, IN p_nickname character varying, IN p_druzynaid integer, IN p_pozycja character varying, IN p_przegrane integer, IN p_wygrane integer, IN p_eliminacje integer, IN p_asysty integer, IN p_zgony integer) OWNER TO postgres;
+
+--
+-- TOC entry 245 (class 1255 OID 17075)
+-- Name: edytujkomentatora(integer, character varying, character varying, character varying); Type: PROCEDURE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE PROCEDURE esportleagueoflegends.edytujkomentatora(IN p_komentatorid integer, IN p_imie character varying, IN p_nazwisko character varying, IN p_nickname character varying)
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    UPDATE esportleagueoflegends.komentatorzy
+    SET imie = p_imie,
+        nazwisko = p_nazwisko,
+        nickname = p_nickname
+    WHERE komentatorid = p_komentatorid;
+END;
+$$;
+
+
+ALTER PROCEDURE esportleagueoflegends.edytujkomentatora(IN p_komentatorid integer, IN p_imie character varying, IN p_nazwisko character varying, IN p_nickname character varying) OWNER TO postgres;
+
+--
+-- TOC entry 246 (class 1255 OID 17076)
+-- Name: edytujmecz(integer, integer, integer); Type: PROCEDURE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE PROCEDURE esportleagueoflegends.edytujmecz(IN p_meczid integer, IN p_komentatorid integer, IN p_turniejid integer)
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    UPDATE EsportLeagueOfLegends.Mecze
+    SET KomentatorID = p_KomentatorID, TurniejID = p_TurniejID
+    WHERE MeczID = p_MeczID;
+END;
+$$;
+
+
+ALTER PROCEDURE esportleagueoflegends.edytujmecz(IN p_meczid integer, IN p_komentatorid integer, IN p_turniejid integer) OWNER TO postgres;
+
+--
+-- TOC entry 258 (class 1255 OID 17249)
+-- Name: edytujpostac(integer, character varying); Type: PROCEDURE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE PROCEDURE esportleagueoflegends.edytujpostac(IN p_postacid integer, IN p_nazwa character varying)
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    UPDATE EsportLeagueOfLegends.Postacie
+    SET Nazwa = p_Nazwa
+    WHERE PostacID = p_PostacID;
+END;
+$$;
+
+
+ALTER PROCEDURE esportleagueoflegends.edytujpostac(IN p_postacid integer, IN p_nazwa character varying) OWNER TO postgres;
+
+--
+-- TOC entry 247 (class 1255 OID 17078)
+-- Name: edytujregion(integer, character varying, character varying); Type: PROCEDURE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE PROCEDURE esportleagueoflegends.edytujregion(IN p_regionid integer, IN p_nazwa character varying, IN p_skrot character varying)
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    UPDATE EsportLeagueOfLegends.Regiony
+    SET Nazwa = p_Nazwa, Skrot = p_Skrot
+    WHERE RegionID = p_RegionID;
+END;
+$$;
+
+
+ALTER PROCEDURE esportleagueoflegends.edytujregion(IN p_regionid integer, IN p_nazwa character varying, IN p_skrot character varying) OWNER TO postgres;
+
+--
+-- TOC entry 243 (class 1255 OID 17267)
+-- Name: edytujtransfer(integer, integer, integer, integer); Type: PROCEDURE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE PROCEDURE esportleagueoflegends.edytujtransfer(IN p_transferid integer, IN p_graczid integer, IN p_druzyna1 integer, IN p_druzyna2 integer)
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    UPDATE EsportLeagueOfLegends.Transfery
+    SET GraczID = p_GraczID, Druzyna1 = p_Druzyna1, Druzyna2 = p_Druzyna2
+    WHERE TransferID = p_TransferID;
+END;
+$$;
+
+
+ALTER PROCEDURE esportleagueoflegends.edytujtransfer(IN p_transferid integer, IN p_graczid integer, IN p_druzyna1 integer, IN p_druzyna2 integer) OWNER TO postgres;
+
+--
+-- TOC entry 248 (class 1255 OID 17080)
+-- Name: edytujtrenera(integer, character varying, character varying, integer); Type: PROCEDURE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE PROCEDURE esportleagueoflegends.edytujtrenera(IN p_trenerid integer, IN p_imie character varying, IN p_nazwisko character varying, IN p_druzynaid integer)
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    UPDATE EsportLeagueOfLegends.Trenerzy
+    SET Imie = p_Imie, Nazwisko = p_Nazwisko, DruzynaID = p_DruzynaID
+    WHERE TrenerID = p_TrenerID;
+END;
+$$;
+
+
+ALTER PROCEDURE esportleagueoflegends.edytujtrenera(IN p_trenerid integer, IN p_imie character varying, IN p_nazwisko character varying, IN p_druzynaid integer) OWNER TO postgres;
+
+--
+-- TOC entry 304 (class 1255 OID 17279)
+-- Name: edytujturniej(integer, character varying, character varying, character varying, character varying, integer, timestamp without time zone); Type: PROCEDURE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE PROCEDURE esportleagueoflegends.edytujturniej(IN p_turniejid integer, IN p_nazwaturnieju character varying, IN p_rodzaj character varying, IN p_organizator character varying, IN p_adres character varying, IN p_regionid integer, IN p_data timestamp without time zone)
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    UPDATE EsportLeagueOfLegends.Turnieje
+    SET NazwaTurnieju = p_NazwaTurnieju, Rodzaj = p_Rodzaj, Organizator = p_Organizator, Adres = p_Adres, RegionID = p_RegionID, Data = p_Data
+    WHERE TurniejID = p_TurniejID;
+END;
+$$;
+
+
+ALTER PROCEDURE esportleagueoflegends.edytujturniej(IN p_turniejid integer, IN p_nazwaturnieju character varying, IN p_rodzaj character varying, IN p_organizator character varying, IN p_adres character varying, IN p_regionid integer, IN p_data timestamp without time zone) OWNER TO postgres;
+
+--
+-- TOC entry 299 (class 1255 OID 17275)
+-- Name: fn_transfer_gracza(); Type: FUNCTION; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE FUNCTION esportleagueoflegends.fn_transfer_gracza() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    /*
+     * Po wstawieniu nowego rekordu do 'transfery'
+     * chcemy przenieść (zaktualizować) gracza w tabeli 'gracze'
+     *  - ustawić mu druzyne = NEW.druzyna2
+     *  - bo 'NEW' wskazuje na nowo wstawiony wiersz w 'transfery'
+     */
+
+    UPDATE esportleagueoflegends.gracze
+       SET druzynaid = NEW.druzyna2
+     WHERE graczid = NEW.graczid;
+
+    /*
+     * Zwracamy NEW, żeby cały trigger był spójny,
+     * w AFTER INSERT to i tak nie zmienia samego wiersza w 'transfery'
+     */
+    RETURN NEW;
+END;
+$$;
+
+
+ALTER FUNCTION esportleagueoflegends.fn_transfer_gracza() OWNER TO postgres;
+
+--
+-- TOC entry 293 (class 1255 OID 17265)
+-- Name: get_all_characters(); Type: FUNCTION; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE FUNCTION esportleagueoflegends.get_all_characters() RETURNS TABLE(postacid integer, nazwa character varying)
+    LANGUAGE sql
+    AS $$
+    SELECT postacid, nazwa
+    FROM esportleagueoflegends.postacie;
+$$;
+
+
+ALTER FUNCTION esportleagueoflegends.get_all_characters() OWNER TO postgres;
+
+--
+-- TOC entry 249 (class 1255 OID 17082)
+-- Name: get_all_coaches(); Type: FUNCTION; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE FUNCTION esportleagueoflegends.get_all_coaches() RETURNS TABLE(trenerid integer, imie character varying, nazwisko character varying, druzynaid integer)
+    LANGUAGE sql
+    AS $$
+    SELECT 
+        TrenerID,
+        Imie,
+        Nazwisko,
+        DruzynaID
+    FROM EsportLeagueOfLegends.Trenerzy;
+$$;
+
+
+ALTER FUNCTION esportleagueoflegends.get_all_coaches() OWNER TO postgres;
+
+--
+-- TOC entry 295 (class 1255 OID 17271)
+-- Name: get_all_commentators(); Type: FUNCTION; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE FUNCTION esportleagueoflegends.get_all_commentators() RETURNS TABLE(komentatorid integer, imie character varying, nazwisko character varying, nickname character varying)
+    LANGUAGE sql
+    AS $$
+    SELECT komentatorid, imie, nazwisko, nickname
+    FROM esportleagueoflegends.komentatorzy;
+$$;
+
+
+ALTER FUNCTION esportleagueoflegends.get_all_commentators() OWNER TO postgres;
+
+--
+-- TOC entry 292 (class 1255 OID 17263)
+-- Name: get_all_matches(); Type: FUNCTION; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE FUNCTION esportleagueoflegends.get_all_matches() RETURNS TABLE(meczid integer, komentatorid integer, turniejid integer)
+    LANGUAGE sql
+    AS $$
+    SELECT meczid, komentatorid, turniejid
+    FROM esportleagueoflegends.mecze;
+$$;
+
+
+ALTER FUNCTION esportleagueoflegends.get_all_matches() OWNER TO postgres;
+
+--
+-- TOC entry 291 (class 1255 OID 17262)
+-- Name: get_all_players(); Type: FUNCTION; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE FUNCTION esportleagueoflegends.get_all_players() RETURNS TABLE(graczid integer, nickname character varying, druzynaid integer, przegrane integer, wygrane integer, eliminacje integer, asysty integer, zgony integer, pozycja character varying)
+    LANGUAGE sql
+    AS $$
+    SELECT graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja
+    FROM esportleagueoflegends.gracze;
+$$;
+
+
+ALTER FUNCTION esportleagueoflegends.get_all_players() OWNER TO postgres;
+
+--
+-- TOC entry 290 (class 1255 OID 17261)
+-- Name: get_all_regions(); Type: FUNCTION; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE FUNCTION esportleagueoflegends.get_all_regions() RETURNS TABLE(regionid integer, nazwa character varying, skrot character varying)
+    LANGUAGE sql
+    AS $$
+    SELECT regionid, nazwa, skrot
+    FROM esportleagueoflegends.regiony;
+$$;
+
+
+ALTER FUNCTION esportleagueoflegends.get_all_regions() OWNER TO postgres;
+
+--
+-- TOC entry 288 (class 1255 OID 17260)
+-- Name: get_all_teams(); Type: FUNCTION; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE FUNCTION esportleagueoflegends.get_all_teams() RETURNS TABLE(druzynaid integer, nazwa character varying, regionid integer)
+    LANGUAGE sql
+    AS $$
+    SELECT druzynaid, nazwa, regionid
+    FROM esportleagueoflegends.druzyny;
+$$;
+
+
+ALTER FUNCTION esportleagueoflegends.get_all_teams() OWNER TO postgres;
+
+--
+-- TOC entry 250 (class 1255 OID 17083)
+-- Name: get_all_tournaments(); Type: FUNCTION; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE FUNCTION esportleagueoflegends.get_all_tournaments() RETURNS TABLE(turniejid integer, nazwaturnieju character varying, rodzaj character varying, organizator character varying, adres character varying, data date)
+    LANGUAGE sql
+    AS $$
+    SELECT 
+        TurniejID,
+        NazwaTurnieju,
+        Rodzaj,
+        Organizator,
+        Adres,
+        Data
+    FROM EsportLeagueOfLegends.Turnieje;
+$$;
+
+
+ALTER FUNCTION esportleagueoflegends.get_all_tournaments() OWNER TO postgres;
+
+--
+-- TOC entry 294 (class 1255 OID 17269)
+-- Name: get_all_transfers(); Type: FUNCTION; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE FUNCTION esportleagueoflegends.get_all_transfers() RETURNS TABLE(transferid integer, graczid integer, druzyna1 integer, druzyna2 integer)
+    LANGUAGE sql
+    AS $$
+    SELECT transferid, graczid, druzyna1, druzyna2
+    FROM esportleagueoflegends.transfery;
+$$;
+
+
+ALTER FUNCTION esportleagueoflegends.get_all_transfers() OWNER TO postgres;
+
+--
+-- TOC entry 251 (class 1255 OID 17084)
+-- Name: get_average_kills_and_deaths_by_player(); Type: FUNCTION; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE FUNCTION esportleagueoflegends.get_average_kills_and_deaths_by_player() RETURNS TABLE(graczid integer, nickname character varying, sredniaeliminacji numeric, sredniazgonow numeric)
+    LANGUAGE sql
+    AS $$
+    SELECT 
+        GraczID,
+        Nickname,
+        CASE 
+            WHEN Eliminacje > 0 THEN Eliminacje::NUMERIC 
+            ELSE 0 
+        END AS SredniaEliminacji,
+        CASE 
+            WHEN Zgony > 0 THEN Zgony::NUMERIC 
+            ELSE 0 
+        END AS SredniaZgonow
+    FROM EsportLeagueOfLegends.Gracze;
+$$;
+
+
+ALTER FUNCTION esportleagueoflegends.get_average_kills_and_deaths_by_player() OWNER TO postgres;
+
+--
+-- TOC entry 253 (class 1255 OID 17085)
+-- Name: get_best_team_in_tournament(bigint); Type: FUNCTION; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE FUNCTION esportleagueoflegends.get_best_team_in_tournament(turniej_id_param bigint) RETURNS TABLE(druzynaid integer, nazwa character varying, liczbawygranych integer)
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    RETURN QUERY 
+    SELECT 
+        d.druzynaid,
+        d.nazwa,
+        esportleagueoflegends.get_team_wins(d.druzynaid) AS liczbawygranych
+    FROM EsportLeagueOfLegends.Druzyny d
+    WHERE d.druzynaid IN (
+        SELECT DISTINCT g.druzynaid
+        FROM EsportLeagueOfLegends.Gracze g
+        JOIN EsportLeagueOfLegends.xyz x ON g.GraczID = x.GraczID
+        JOIN EsportLeagueOfLegends.Mecze m ON x.MeczID = m.MeczID
+        WHERE m.TurniejID = turniej_id_param
+    )
+    ORDER BY liczbawygranych DESC
+    LIMIT 1;
+END;
+$$;
+
+
+ALTER FUNCTION esportleagueoflegends.get_best_team_in_tournament(turniej_id_param bigint) OWNER TO postgres;
+
+--
+-- TOC entry 260 (class 1255 OID 17086)
+-- Name: get_coaches_by_region(bigint); Type: FUNCTION; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE FUNCTION esportleagueoflegends.get_coaches_by_region(region_id_param bigint) RETURNS TABLE(trenerid integer, imie character varying, nazwisko character varying, druzynanazwa character varying)
+    LANGUAGE sql
+    AS $$
+    SELECT 
+        t.TrenerID,
+        t.Imie,
+        t.Nazwisko,
+        d.Nazwa AS DruzynaNazwa
+    FROM EsportLeagueOfLegends.Trenerzy t
+    JOIN EsportLeagueOfLegends.Druzyny d ON t.DruzynaID = d.DruzynaID
+    WHERE d.RegionID = region_id_param;
+$$;
+
+
+ALTER FUNCTION esportleagueoflegends.get_coaches_by_region(region_id_param bigint) OWNER TO postgres;
+
+--
+-- TOC entry 271 (class 1255 OID 17087)
+-- Name: get_commentators_by_region(bigint); Type: FUNCTION; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE FUNCTION esportleagueoflegends.get_commentators_by_region(region_id_param bigint) RETURNS TABLE(komentatorid integer, imie character varying, nazwisko character varying, nickname character varying)
+    LANGUAGE sql
+    AS $$
+    SELECT DISTINCT 
+        k.KomentatorID,
+        k.Imie,
+        k.Nazwisko,
+        k.Nickname
+    FROM EsportLeagueOfLegends.Komentatorzy k
+    JOIN EsportLeagueOfLegends.Mecze m ON k.KomentatorID = m.KomentatorID
+    JOIN EsportLeagueOfLegends.Turnieje t ON m.TurniejID = t.TurniejID
+    WHERE t.RegionID = region_id_param;
+$$;
+
+
+ALTER FUNCTION esportleagueoflegends.get_commentators_by_region(region_id_param bigint) OWNER TO postgres;
+
+--
+-- TOC entry 300 (class 1255 OID 17283)
+-- Name: get_match_count_by_commentator(); Type: FUNCTION; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE FUNCTION esportleagueoflegends.get_match_count_by_commentator() RETURNS TABLE(komentatorid integer, imie character varying, nazwisko character varying, nickname character varying, liczbameczow integer)
+    LANGUAGE sql
+    AS $$
+    SELECT 
+        k.KomentatorID,
+        k.Imie,
+        k.Nazwisko,
+        k.Nickname,
+        COALESCE(COUNT(m.MeczID), 0) AS LiczbaMeczow
+    FROM esportleagueoflegends.Komentatorzy k
+    LEFT JOIN esportleagueoflegends.Mecze m 
+           ON k.KomentatorID = m.KomentatorID
+    GROUP BY k.KomentatorID, k.Imie, k.Nazwisko, k.Nickname;
+$$;
+
+
+ALTER FUNCTION esportleagueoflegends.get_match_count_by_commentator() OWNER TO postgres;
+
+--
+-- TOC entry 301 (class 1255 OID 17284)
+-- Name: get_matches_by_tournament(bigint); Type: FUNCTION; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE FUNCTION esportleagueoflegends.get_matches_by_tournament(turniej_id_param bigint) RETURNS TABLE(meczid integer, komentatorid integer, turniejid integer)
+    LANGUAGE sql
+    AS $$
+    SELECT 
+        MeczID,
+        KomentatorID,
+        TurniejID
+    FROM EsportLeagueOfLegends.Mecze
+    WHERE TurniejID = turniej_id_param;
+$$;
+
+
+ALTER FUNCTION esportleagueoflegends.get_matches_by_tournament(turniej_id_param bigint) OWNER TO postgres;
+
+--
+-- TOC entry 273 (class 1255 OID 17090)
+-- Name: get_most_picked_characters(); Type: FUNCTION; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE FUNCTION esportleagueoflegends.get_most_picked_characters() RETURNS TABLE(postacid integer, nazwa character varying, liczbawybran integer)
+    LANGUAGE sql
+    AS $$
+    SELECT 
+        p.PostacID,
+        p.Nazwa,
+        COUNT(x.PostacID) AS LiczbaWybran
+    FROM EsportLeagueOfLegends.Postacie p
+    JOIN EsportLeagueOfLegends.xyz x ON p.PostacID = x.PostacID
+    GROUP BY p.PostacID, p.Nazwa
+    ORDER BY LiczbaWybran DESC
+    LIMIT 5;
+$$;
+
+
+ALTER FUNCTION esportleagueoflegends.get_most_picked_characters() OWNER TO postgres;
+
+--
+-- TOC entry 274 (class 1255 OID 17091)
+-- Name: get_players_with_teams(); Type: FUNCTION; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE FUNCTION esportleagueoflegends.get_players_with_teams() RETURNS TABLE(graczid integer, nickname character varying, druzynaid integer, druzynanazwa character varying)
+    LANGUAGE sql
+    AS $$
+    SELECT 
+        g.GraczID,
+        g.Nickname,
+        g.DruzynaID,
+        d.Nazwa AS DruzynaNazwa
+    FROM EsportLeagueOfLegends.Gracze g
+    JOIN EsportLeagueOfLegends.Druzyny d ON g.DruzynaID = d.DruzynaID;
+$$;
+
+
+ALTER FUNCTION esportleagueoflegends.get_players_with_teams() OWNER TO postgres;
+
+--
+-- TOC entry 275 (class 1255 OID 17092)
+-- Name: get_recent_matches_by_commentator(bigint); Type: FUNCTION; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE FUNCTION esportleagueoflegends.get_recent_matches_by_commentator(commentator_id_param bigint) RETURNS TABLE(meczid integer, komentatorid integer, turniejid integer)
+    LANGUAGE sql
+    AS $$
+    SELECT 
+        MeczID,
+        KomentatorID,
+        TurniejID
+    FROM EsportLeagueOfLegends.Mecze
+    WHERE KomentatorID = commentator_id_param
+    ORDER BY MeczID DESC
+    LIMIT 10;
+$$;
+
+
+ALTER FUNCTION esportleagueoflegends.get_recent_matches_by_commentator(commentator_id_param bigint) OWNER TO postgres;
+
+--
+-- TOC entry 276 (class 1255 OID 17093)
+-- Name: get_team_players_stats(bigint); Type: FUNCTION; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE FUNCTION esportleagueoflegends.get_team_players_stats(team_id_param bigint) RETURNS TABLE(graczid integer, nickname character varying, przegrane integer, wygrane integer, eliminacje integer, asysty integer, zgony integer)
+    LANGUAGE sql
+    AS $$
+    SELECT 
+        GraczID,
+        Nickname,
+        Przegrane,
+        Wygrane,
+        Eliminacje,
+        Asysty,
+        Zgony
+    FROM EsportLeagueOfLegends.Gracze
+    WHERE DruzynaID = team_id_param;
+$$;
+
+
+ALTER FUNCTION esportleagueoflegends.get_team_players_stats(team_id_param bigint) OWNER TO postgres;
+
+--
+-- TOC entry 277 (class 1255 OID 17094)
+-- Name: get_team_wins(integer); Type: FUNCTION; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE FUNCTION esportleagueoflegends.get_team_wins(team_id_param integer) RETURNS integer
+    LANGUAGE plpgsql
+    AS $$
+DECLARE 
+    win_count INT;
+BEGIN
+    SELECT COUNT(DISTINCT m.MeczID) 
+    INTO win_count
+    FROM EsportLeagueOfLegends.Mecze m
+    JOIN EsportLeagueOfLegends.xyz x ON m.MeczID = x.MeczID
+    WHERE x.GraczID IN (
+        SELECT GraczID FROM EsportLeagueOfLegends.Gracze WHERE druzynaID = team_id_param
+    ) AND x.Wynik > 0; -- Zakładamy, że wynik > 0 oznacza wygraną
+
+    RETURN win_count;
+END;
+$$;
+
+
+ALTER FUNCTION esportleagueoflegends.get_team_wins(team_id_param integer) OWNER TO postgres;
+
+--
+-- TOC entry 278 (class 1255 OID 17095)
+-- Name: get_teams_by_region(bigint); Type: FUNCTION; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE FUNCTION esportleagueoflegends.get_teams_by_region(region_id_param bigint) RETURNS TABLE(druzynaid integer, nazwa character varying)
+    LANGUAGE sql
+    AS $$
+    SELECT 
+        DruzynaID,
+        Nazwa
+    FROM EsportLeagueOfLegends.Druzyny
+    WHERE RegionID = region_id_param;
+$$;
+
+
+ALTER FUNCTION esportleagueoflegends.get_teams_by_region(region_id_param bigint) OWNER TO postgres;
+
+--
+-- TOC entry 279 (class 1255 OID 17096)
+-- Name: get_teams_with_most_players(); Type: FUNCTION; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE FUNCTION esportleagueoflegends.get_teams_with_most_players() RETURNS TABLE(druzynaid integer, druzynanazwa character varying, liczbagraczy integer)
+    LANGUAGE sql
+    AS $$
+    SELECT 
+        d.DruzynaID,
+        d.Nazwa AS DruzynaNazwa,
+        COUNT(g.GraczID) AS LiczbaGraczy
+    FROM EsportLeagueOfLegends.Druzyny d
+    LEFT JOIN EsportLeagueOfLegends.Gracze g ON d.DruzynaID = g.DruzynaID
+    GROUP BY d.DruzynaID, d.Nazwa
+    ORDER BY LiczbaGraczy DESC;
+$$;
+
+
+ALTER FUNCTION esportleagueoflegends.get_teams_with_most_players() OWNER TO postgres;
+
+--
+-- TOC entry 280 (class 1255 OID 17097)
+-- Name: get_teams_with_most_transfers(); Type: FUNCTION; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE FUNCTION esportleagueoflegends.get_teams_with_most_transfers() RETURNS TABLE(druzynaid integer, nazwa character varying, liczbatransferow integer)
+    LANGUAGE sql
+    AS $$
+    SELECT 
+        d.DruzynaID,
+        d.Nazwa,
+        (
+            SELECT COUNT(*)
+            FROM EsportLeagueOfLegends.Transfery t
+            WHERE t.Druzyna1 = d.DruzynaID OR t.Druzyna2 = d.DruzynaID
+        ) AS LiczbaTransferow
+    FROM EsportLeagueOfLegends.Druzyny d
+    ORDER BY LiczbaTransferow DESC
+    LIMIT 10;
+$$;
+
+
+ALTER FUNCTION esportleagueoflegends.get_teams_with_most_transfers() OWNER TO postgres;
+
+--
+-- TOC entry 302 (class 1255 OID 17277)
+-- Name: get_top_assisters_by_team(); Type: FUNCTION; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE FUNCTION esportleagueoflegends.get_top_assisters_by_team() RETURNS TABLE(graczid integer, nickname character varying, asysty integer)
+    LANGUAGE sql
+    AS $$
+    SELECT
+        GraczID,
+        Nickname,
+        Asysty
+    FROM EsportLeagueOfLegends.Gracze
+    ORDER BY Asysty DESC
+    LIMIT 5;
+$$;
+
+
+ALTER FUNCTION esportleagueoflegends.get_top_assisters_by_team() OWNER TO postgres;
+
+--
+-- TOC entry 252 (class 1255 OID 17099)
+-- Name: get_top_kda_players(); Type: FUNCTION; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE FUNCTION esportleagueoflegends.get_top_kda_players() RETURNS TABLE(graczid integer, nickname character varying, kda numeric)
+    LANGUAGE sql
+    AS $$
+    SELECT 
+        GraczID,
+        Nickname,
+        CASE 
+            WHEN Zgony = 0 THEN Eliminacje + Asysty
+            ELSE ROUND((Eliminacje + Asysty)::NUMERIC / Zgony, 2)
+        END AS KDA
+    FROM EsportLeagueOfLegends.Gracze
+    ORDER BY KDA DESC
+    LIMIT 10;
+$$;
+
+
+ALTER FUNCTION esportleagueoflegends.get_top_kda_players() OWNER TO postgres;
+
+--
+-- TOC entry 255 (class 1255 OID 17100)
+-- Name: get_top_winners(); Type: FUNCTION; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE FUNCTION esportleagueoflegends.get_top_winners() RETURNS TABLE(graczid integer, nickname character varying, wygrane integer)
+    LANGUAGE sql
+    AS $$
+    SELECT 
+        GraczID,
+        Nickname,
+        Wygrane
+    FROM EsportLeagueOfLegends.Gracze
+    ORDER BY Wygrane DESC
+    LIMIT 10;
+$$;
+
+
+ALTER FUNCTION esportleagueoflegends.get_top_winners() OWNER TO postgres;
+
+--
+-- TOC entry 259 (class 1255 OID 17101)
+-- Name: get_tournaments_count_by_region(); Type: FUNCTION; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE FUNCTION esportleagueoflegends.get_tournaments_count_by_region() RETURNS TABLE(regionid integer, regionnazwa character varying, liczbaturniejow integer)
+    LANGUAGE sql
+    AS $$
+    SELECT 
+        r.RegionID,
+        r.Nazwa AS RegionNazwa,
+        COUNT(t.TurniejID) AS LiczbaTurniejow
+    FROM EsportLeagueOfLegends.Regiony r
+    LEFT JOIN EsportLeagueOfLegends.Turnieje t ON r.RegionID = t.RegionID
+    GROUP BY r.RegionID, r.Nazwa;
+$$;
+
+
+ALTER FUNCTION esportleagueoflegends.get_tournaments_count_by_region() OWNER TO postgres;
+
+--
+-- TOC entry 254 (class 1255 OID 17280)
+-- Name: usun_transfery_po_usunieciu_gracza(); Type: FUNCTION; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE FUNCTION esportleagueoflegends.usun_transfery_po_usunieciu_gracza() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    -- Usunięcie rekordów z tabeli transfery, gdzie graczid odpowiada usuniętemu graczowi
+    DELETE FROM esportleagueoflegends.transfery
+    WHERE graczid = OLD.graczid;
+
+    RETURN OLD;
+END;
+$$;
+
+
+ALTER FUNCTION esportleagueoflegends.usun_transfery_po_usunieciu_gracza() OWNER TO postgres;
+
+--
+-- TOC entry 281 (class 1255 OID 17103)
+-- Name: usundruzyne(integer); Type: PROCEDURE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE PROCEDURE esportleagueoflegends.usundruzyne(IN p_druzynaid integer)
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    DELETE FROM EsportLeagueOfLegends.Druzyny
+    WHERE DruzynaID = p_DruzynaID;
+END;
+$$;
+
+
+ALTER PROCEDURE esportleagueoflegends.usundruzyne(IN p_druzynaid integer) OWNER TO postgres;
+
+--
+-- TOC entry 282 (class 1255 OID 17104)
+-- Name: usungracza(integer); Type: PROCEDURE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE PROCEDURE esportleagueoflegends.usungracza(IN p_graczid integer)
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    DELETE FROM EsportLeagueOfLegends.Gracze
+    WHERE GraczID = p_GraczID;
+END;
+$$;
+
+
+ALTER PROCEDURE esportleagueoflegends.usungracza(IN p_graczid integer) OWNER TO postgres;
+
+--
+-- TOC entry 283 (class 1255 OID 17105)
+-- Name: usunkomentatora(integer); Type: PROCEDURE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE PROCEDURE esportleagueoflegends.usunkomentatora(IN p_komentatorid integer)
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    DELETE FROM esportleagueoflegends.komentatorzy
+    WHERE komentatorid = p_komentatorid;
+END;
+$$;
+
+
+ALTER PROCEDURE esportleagueoflegends.usunkomentatora(IN p_komentatorid integer) OWNER TO postgres;
+
+--
+-- TOC entry 284 (class 1255 OID 17106)
+-- Name: usunregion(integer); Type: PROCEDURE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE PROCEDURE esportleagueoflegends.usunregion(IN p_regionid integer)
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    DELETE FROM EsportLeagueOfLegends.Regiony
+    WHERE RegionID = p_RegionID;
+END;
+$$;
+
+
+ALTER PROCEDURE esportleagueoflegends.usunregion(IN p_regionid integer) OWNER TO postgres;
+
+--
+-- TOC entry 285 (class 1255 OID 17107)
+-- Name: usuntrenera(integer); Type: PROCEDURE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE PROCEDURE esportleagueoflegends.usuntrenera(IN p_trenerid integer)
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    DELETE FROM EsportLeagueOfLegends.Trenerzy
+    WHERE TrenerID = p_TrenerID;
+END;
+$$;
+
+
+ALTER PROCEDURE esportleagueoflegends.usuntrenera(IN p_trenerid integer) OWNER TO postgres;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 218 (class 1259 OID 17108)
+-- Name: druzyny; Type: TABLE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE TABLE esportleagueoflegends.druzyny (
+    druzynaid integer NOT NULL,
+    nazwa character varying(100) NOT NULL,
+    regionid integer NOT NULL
+);
+
+
+ALTER TABLE esportleagueoflegends.druzyny OWNER TO postgres;
+
+--
+-- TOC entry 219 (class 1259 OID 17111)
+-- Name: druzyny_druzynaid_seq; Type: SEQUENCE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE SEQUENCE esportleagueoflegends.druzyny_druzynaid_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE esportleagueoflegends.druzyny_druzynaid_seq OWNER TO postgres;
+
+--
+-- TOC entry 4962 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: druzyny_druzynaid_seq; Type: SEQUENCE OWNED BY; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER SEQUENCE esportleagueoflegends.druzyny_druzynaid_seq OWNED BY esportleagueoflegends.druzyny.druzynaid;
+
+
+--
+-- TOC entry 220 (class 1259 OID 17112)
+-- Name: gracze; Type: TABLE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE TABLE esportleagueoflegends.gracze (
+    graczid integer NOT NULL,
+    nickname character varying(50) NOT NULL,
+    druzynaid integer NOT NULL,
+    przegrane integer DEFAULT 0,
+    wygrane integer DEFAULT 0,
+    eliminacje integer DEFAULT 0,
+    asysty integer DEFAULT 0,
+    zgony integer DEFAULT 0,
+    pozycja character varying(30)
+);
+
+
+ALTER TABLE esportleagueoflegends.gracze OWNER TO postgres;
+
+--
+-- TOC entry 221 (class 1259 OID 17120)
+-- Name: gracze_graczid_seq; Type: SEQUENCE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE SEQUENCE esportleagueoflegends.gracze_graczid_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE esportleagueoflegends.gracze_graczid_seq OWNER TO postgres;
+
+--
+-- TOC entry 4963 (class 0 OID 0)
+-- Dependencies: 221
+-- Name: gracze_graczid_seq; Type: SEQUENCE OWNED BY; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER SEQUENCE esportleagueoflegends.gracze_graczid_seq OWNED BY esportleagueoflegends.gracze.graczid;
+
+
+--
+-- TOC entry 222 (class 1259 OID 17121)
+-- Name: komentatorzy; Type: TABLE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE TABLE esportleagueoflegends.komentatorzy (
+    komentatorid integer NOT NULL,
+    imie character varying(50) NOT NULL,
+    nazwisko character varying(50) NOT NULL,
+    nickname character varying(50) NOT NULL
+);
+
+
+ALTER TABLE esportleagueoflegends.komentatorzy OWNER TO postgres;
+
+--
+-- TOC entry 223 (class 1259 OID 17124)
+-- Name: komentatorzy_komentatorid_seq; Type: SEQUENCE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE SEQUENCE esportleagueoflegends.komentatorzy_komentatorid_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE esportleagueoflegends.komentatorzy_komentatorid_seq OWNER TO postgres;
+
+--
+-- TOC entry 4964 (class 0 OID 0)
+-- Dependencies: 223
+-- Name: komentatorzy_komentatorid_seq; Type: SEQUENCE OWNED BY; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER SEQUENCE esportleagueoflegends.komentatorzy_komentatorid_seq OWNED BY esportleagueoflegends.komentatorzy.komentatorid;
+
+
+--
+-- TOC entry 224 (class 1259 OID 17125)
+-- Name: mecze; Type: TABLE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE TABLE esportleagueoflegends.mecze (
+    meczid integer NOT NULL,
+    komentatorid integer NOT NULL,
+    turniejid integer NOT NULL
+);
+
+
+ALTER TABLE esportleagueoflegends.mecze OWNER TO postgres;
+
+--
+-- TOC entry 225 (class 1259 OID 17128)
+-- Name: mecze_meczid_seq; Type: SEQUENCE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE SEQUENCE esportleagueoflegends.mecze_meczid_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE esportleagueoflegends.mecze_meczid_seq OWNER TO postgres;
+
+--
+-- TOC entry 4965 (class 0 OID 0)
+-- Dependencies: 225
+-- Name: mecze_meczid_seq; Type: SEQUENCE OWNED BY; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER SEQUENCE esportleagueoflegends.mecze_meczid_seq OWNED BY esportleagueoflegends.mecze.meczid;
+
+
+--
+-- TOC entry 226 (class 1259 OID 17129)
+-- Name: postacie; Type: TABLE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE TABLE esportleagueoflegends.postacie (
+    postacid integer NOT NULL,
+    nazwa character varying(50) NOT NULL
+);
+
+
+ALTER TABLE esportleagueoflegends.postacie OWNER TO postgres;
+
+--
+-- TOC entry 227 (class 1259 OID 17132)
+-- Name: postacie_postacid_seq; Type: SEQUENCE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE SEQUENCE esportleagueoflegends.postacie_postacid_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE esportleagueoflegends.postacie_postacid_seq OWNER TO postgres;
+
+--
+-- TOC entry 4966 (class 0 OID 0)
+-- Dependencies: 227
+-- Name: postacie_postacid_seq; Type: SEQUENCE OWNED BY; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER SEQUENCE esportleagueoflegends.postacie_postacid_seq OWNED BY esportleagueoflegends.postacie.postacid;
+
+
+--
+-- TOC entry 228 (class 1259 OID 17133)
+-- Name: regiony; Type: TABLE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE TABLE esportleagueoflegends.regiony (
+    regionid integer NOT NULL,
+    nazwa character varying(100) NOT NULL,
+    skrot character varying(10) NOT NULL
+);
+
+
+ALTER TABLE esportleagueoflegends.regiony OWNER TO postgres;
+
+--
+-- TOC entry 229 (class 1259 OID 17136)
+-- Name: regiony_regionid_seq; Type: SEQUENCE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE SEQUENCE esportleagueoflegends.regiony_regionid_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE esportleagueoflegends.regiony_regionid_seq OWNER TO postgres;
+
+--
+-- TOC entry 4967 (class 0 OID 0)
+-- Dependencies: 229
+-- Name: regiony_regionid_seq; Type: SEQUENCE OWNED BY; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER SEQUENCE esportleagueoflegends.regiony_regionid_seq OWNED BY esportleagueoflegends.regiony.regionid;
+
+
+--
+-- TOC entry 230 (class 1259 OID 17137)
+-- Name: transfery; Type: TABLE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE TABLE esportleagueoflegends.transfery (
+    transferid integer NOT NULL,
+    graczid integer,
+    druzyna1 integer NOT NULL,
+    druzyna2 integer NOT NULL
+);
+
+
+ALTER TABLE esportleagueoflegends.transfery OWNER TO postgres;
+
+--
+-- TOC entry 231 (class 1259 OID 17140)
+-- Name: transfery_transferid_seq; Type: SEQUENCE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE SEQUENCE esportleagueoflegends.transfery_transferid_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE esportleagueoflegends.transfery_transferid_seq OWNER TO postgres;
+
+--
+-- TOC entry 4968 (class 0 OID 0)
+-- Dependencies: 231
+-- Name: transfery_transferid_seq; Type: SEQUENCE OWNED BY; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER SEQUENCE esportleagueoflegends.transfery_transferid_seq OWNED BY esportleagueoflegends.transfery.transferid;
+
+
+--
+-- TOC entry 232 (class 1259 OID 17141)
+-- Name: trenerzy; Type: TABLE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE TABLE esportleagueoflegends.trenerzy (
+    trenerid integer NOT NULL,
+    imie character varying(50) NOT NULL,
+    nazwisko character varying(50) NOT NULL,
+    druzynaid integer NOT NULL
+);
+
+
+ALTER TABLE esportleagueoflegends.trenerzy OWNER TO postgres;
+
+--
+-- TOC entry 233 (class 1259 OID 17144)
+-- Name: trenerzy_trenerid_seq; Type: SEQUENCE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE SEQUENCE esportleagueoflegends.trenerzy_trenerid_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE esportleagueoflegends.trenerzy_trenerid_seq OWNER TO postgres;
+
+--
+-- TOC entry 4969 (class 0 OID 0)
+-- Dependencies: 233
+-- Name: trenerzy_trenerid_seq; Type: SEQUENCE OWNED BY; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER SEQUENCE esportleagueoflegends.trenerzy_trenerid_seq OWNED BY esportleagueoflegends.trenerzy.trenerid;
+
+
+--
+-- TOC entry 234 (class 1259 OID 17145)
+-- Name: turnieje; Type: TABLE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE TABLE esportleagueoflegends.turnieje (
+    turniejid integer NOT NULL,
+    nazwaturnieju character varying(100) NOT NULL,
+    rodzaj character varying(50),
+    organizator character varying(100),
+    adres character varying(200),
+    regionid integer NOT NULL,
+    data date
+);
+
+
+ALTER TABLE esportleagueoflegends.turnieje OWNER TO postgres;
+
+--
+-- TOC entry 235 (class 1259 OID 17148)
+-- Name: turnieje_turniejid_seq; Type: SEQUENCE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE SEQUENCE esportleagueoflegends.turnieje_turniejid_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE esportleagueoflegends.turnieje_turniejid_seq OWNER TO postgres;
+
+--
+-- TOC entry 4970 (class 0 OID 0)
+-- Dependencies: 235
+-- Name: turnieje_turniejid_seq; Type: SEQUENCE OWNED BY; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER SEQUENCE esportleagueoflegends.turnieje_turniejid_seq OWNED BY esportleagueoflegends.turnieje.turniejid;
+
+
+--
+-- TOC entry 236 (class 1259 OID 17149)
+-- Name: xyz; Type: TABLE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE TABLE esportleagueoflegends.xyz (
+    uniqueid integer NOT NULL,
+    graczid integer NOT NULL,
+    meczid integer NOT NULL,
+    postacid integer NOT NULL,
+    wynik integer
+);
+
+
+ALTER TABLE esportleagueoflegends.xyz OWNER TO postgres;
+
+--
+-- TOC entry 237 (class 1259 OID 17152)
+-- Name: xyz_uniqueid_seq; Type: SEQUENCE; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE SEQUENCE esportleagueoflegends.xyz_uniqueid_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE esportleagueoflegends.xyz_uniqueid_seq OWNER TO postgres;
+
+--
+-- TOC entry 4971 (class 0 OID 0)
+-- Dependencies: 237
+-- Name: xyz_uniqueid_seq; Type: SEQUENCE OWNED BY; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER SEQUENCE esportleagueoflegends.xyz_uniqueid_seq OWNED BY esportleagueoflegends.xyz.uniqueid;
+
+
+--
+-- TOC entry 4743 (class 2604 OID 17153)
+-- Name: druzyny druzynaid; Type: DEFAULT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.druzyny ALTER COLUMN druzynaid SET DEFAULT nextval('esportleagueoflegends.druzyny_druzynaid_seq'::regclass);
+
+
+--
+-- TOC entry 4744 (class 2604 OID 17154)
+-- Name: gracze graczid; Type: DEFAULT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.gracze ALTER COLUMN graczid SET DEFAULT nextval('esportleagueoflegends.gracze_graczid_seq'::regclass);
+
+
+--
+-- TOC entry 4750 (class 2604 OID 17155)
+-- Name: komentatorzy komentatorid; Type: DEFAULT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.komentatorzy ALTER COLUMN komentatorid SET DEFAULT nextval('esportleagueoflegends.komentatorzy_komentatorid_seq'::regclass);
+
+
+--
+-- TOC entry 4751 (class 2604 OID 17156)
+-- Name: mecze meczid; Type: DEFAULT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.mecze ALTER COLUMN meczid SET DEFAULT nextval('esportleagueoflegends.mecze_meczid_seq'::regclass);
+
+
+--
+-- TOC entry 4752 (class 2604 OID 17157)
+-- Name: postacie postacid; Type: DEFAULT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.postacie ALTER COLUMN postacid SET DEFAULT nextval('esportleagueoflegends.postacie_postacid_seq'::regclass);
+
+
+--
+-- TOC entry 4753 (class 2604 OID 17158)
+-- Name: regiony regionid; Type: DEFAULT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.regiony ALTER COLUMN regionid SET DEFAULT nextval('esportleagueoflegends.regiony_regionid_seq'::regclass);
+
+
+--
+-- TOC entry 4754 (class 2604 OID 17159)
+-- Name: transfery transferid; Type: DEFAULT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.transfery ALTER COLUMN transferid SET DEFAULT nextval('esportleagueoflegends.transfery_transferid_seq'::regclass);
+
+
+--
+-- TOC entry 4755 (class 2604 OID 17160)
+-- Name: trenerzy trenerid; Type: DEFAULT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.trenerzy ALTER COLUMN trenerid SET DEFAULT nextval('esportleagueoflegends.trenerzy_trenerid_seq'::regclass);
+
+
+--
+-- TOC entry 4756 (class 2604 OID 17161)
+-- Name: turnieje turniejid; Type: DEFAULT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.turnieje ALTER COLUMN turniejid SET DEFAULT nextval('esportleagueoflegends.turnieje_turniejid_seq'::regclass);
+
+
+--
+-- TOC entry 4757 (class 2604 OID 17162)
+-- Name: xyz uniqueid; Type: DEFAULT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.xyz ALTER COLUMN uniqueid SET DEFAULT nextval('esportleagueoflegends.xyz_uniqueid_seq'::regclass);
+
+
+--
+-- TOC entry 4937 (class 0 OID 17108)
+-- Dependencies: 218
+-- Data for Name: druzyny; Type: TABLE DATA; Schema: esportleagueoflegends; Owner: postgres
+--
+
+-------------------------------------------------------------------------------
+-- ZAMIANA "COPY ... FROM stdin" NA "INSERT INTO ... VALUES (...)"
+-------------------------------------------------------------------------------
+
+-- Tabela: esportleagueoflegends.druzyny
+INSERT INTO esportleagueoflegends.druzyny (druzynaid, nazwa, regionid) 
+VALUES (1, 'G2 Esports', 1);
+INSERT INTO esportleagueoflegends.druzyny (druzynaid, nazwa, regionid) 
+VALUES (2, 'Fnatic', 1);
+INSERT INTO esportleagueoflegends.druzyny (druzynaid, nazwa, regionid) 
+VALUES (3, 'Team Liquid', 2);
+INSERT INTO esportleagueoflegends.druzyny (druzynaid, nazwa, regionid) 
+VALUES (4, 'T1', 3);
+INSERT INTO esportleagueoflegends.druzyny (druzynaid, nazwa, regionid) 
+VALUES (5, 'EDward Gaming', 4);
+INSERT INTO esportleagueoflegends.druzyny (druzynaid, nazwa, regionid) 
+VALUES (6, 'paiN Gaming', 5);
+INSERT INTO esportleagueoflegends.druzyny (druzynaid, nazwa, regionid) 
+VALUES (8, 'g4', 1);
+INSERT INTO esportleagueoflegends.druzyny (druzynaid, nazwa, regionid) 
+VALUES (15, 'Pomidor', 1);
+
+-------------------------------------------------------------------------------
+-- Tabela: esportleagueoflegends.gracze
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (2, 'Rekkles', 1, 20, 60, 350, 250, 150, 'ADC');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (3, 'Mikyx', 1, 18, 62, 310, 260, 140, 'Support');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (4, 'BrokenBlade', 1, 25, 55, 320, 210, 160, 'Top');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (5, 'Yike', 1, 22, 58, 280, 230, 150, 'Jungle');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (6, 'Humanoid', 2, 25, 55, 375, 280, 190, 'Mid');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (7, 'Upset', 2, 24, 56, 330, 270, 180, 'ADC');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (8, 'Hylissang', 2, 20, 60, 290, 240, 170, 'Support');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (9, 'Razork', 2, 30, 50, 300, 220, 190, 'Jungle');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (10, 'Wunder', 2, 35, 45, 300, 200, 210, 'Top');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (11, 'WunderKid', 3, 8, 15, 180, 130, 85, 'Top');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (12, 'Jankz', 3, 12, 16, 220, 120, 100, 'Jungle');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (13, 'RookieOne', 3, 10, 10, 160, 90, 80, 'ADC');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (14, 'ScoutAr', 3, 9, 14, 190, 100, 90, 'Support');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (15, 'MakNoonX', 3, 14, 15, 240, 150, 110, 'Mid');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (16, 'SvenskPro', 3, 15, 16, 300, 100, 130, 'Top');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (17, 'DeftShot', 3, 8, 10, 120, 80, 60, 'ADC');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (18, 'JackeyLov', 4, 10, 14, 210, 130, 100, 'Mid');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (19, 'Clearluv', 4, 11, 12, 200, 90, 80, 'ADC');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (20, 'SofMlol', 4, 14, 18, 310, 120, 140, 'Jungle');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (21, 'UziTheBest', 4, 7, 9, 140, 100, 85, 'Support');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (22, 'CoreJJ99', 4, 12, 14, 250, 140, 120, 'Top');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (23, 'Bo1Bolt', 4, 9, 13, 180, 130, 90, 'ADC');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (24, 'Amb1tion', 4, 10, 12, 190, 80, 95, 'Support');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (25, 'BeryLl', 5, 15, 20, 320, 150, 140, 'Top');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (26, 'TianGG', 5, 9, 11, 170, 100, 75, 'ADC');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (27, 'NuguriPro', 5, 6, 10, 120, 70, 65, 'Support');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (28, 'GhostShot', 5, 12, 16, 240, 140, 110, 'Mid');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (29, 'ShowTime', 5, 11, 12, 220, 130, 100, 'Jungle');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (30, 'ZekaOne', 5, 10, 13, 190, 120, 95, 'ADC');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (31, 'MadaCarr', 5, 8, 14, 200, 90, 85, 'Top');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (32, 'ZyLord', 6, 12, 17, 270, 150, 110, 'Mid');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (33, 'DoinbgX', 6, 7, 11, 120, 100, 70, 'Support');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (34, 'LightNice', 6, 10, 13, 220, 110, 90, 'Top');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (35, 'FlandreX', 6, 11, 14, 210, 130, 100, 'ADC');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (36, 'AlphariLol', 6, 14, 19, 340, 160, 140, 'Jungle');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (37, 'Dest1ny', 6, 9, 15, 170, 85, 80, 'ADC');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (38, 'PowerVev0', 6, 13, 15, 250, 100, 120, 'Support');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (39, 'FoFoMid', 8, 8, 12, 150, 90, 65, 'ADC');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (40, 'Wei2Kid', 8, 10, 14, 200, 110, 90, 'Mid');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (41, 'MingGo', 8, 11, 13, 230, 130, 100, 'Support');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (42, 'CrispShot', 8, 9, 15, 190, 100, 85, 'Jungle');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (43, 'MorganOne', 8, 12, 16, 240, 140, 110, 'Top');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (44, 'SwordAr', 8, 15, 19, 350, 180, 150, 'ADC');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (45, 'Zz1tai', 8, 6, 9, 100, 70, 60, 'Support');
+INSERT INTO esportleagueoflegends.gracze (graczid, nickname, druzynaid, przegrane, wygrane, eliminacje, asysty, zgony, pozycja)
+VALUES (1, 'Caps', 1, 30, 50, 400, 300, 200, 'Mid');
+
+-------------------------------------------------------------------------------
+-- Tabela: esportleagueoflegends.komentatorzy
+INSERT INTO esportleagueoflegends.komentatorzy (komentatorid, imie, nazwisko, nickname)
+VALUES (1, 'Trevor', 'Henry', 'Quickshot');
+INSERT INTO esportleagueoflegends.komentatorzy (komentatorid, imie, nazwisko, nickname)
+VALUES (2, 'Aaron', 'Chamberlain', 'Medic');
+INSERT INTO esportleagueoflegends.komentatorzy (komentatorid, imie, nazwisko, nickname)
+VALUES (3, 'Andrew', 'Day', 'Vedius');
+INSERT INTO esportleagueoflegends.komentatorzy (komentatorid, imie, nazwisko, nickname)
+VALUES (4, 'David', 'Turley', 'Phreak');
+INSERT INTO esportleagueoflegends.komentatorzy (komentatorid, imie, nazwisko, nickname)
+VALUES (5, 'Max', 'Anderson', 'Atlus');
+
+-------------------------------------------------------------------------------
+-- Tabela: esportleagueoflegends.mecze
+INSERT INTO esportleagueoflegends.mecze (meczid, komentatorid, turniejid)
+VALUES (2, 2, 2);
+INSERT INTO esportleagueoflegends.mecze (meczid, komentatorid, turniejid)
+VALUES (3, 3, 3);
+INSERT INTO esportleagueoflegends.mecze (meczid, komentatorid, turniejid)
+VALUES (4, 4, 4);
+INSERT INTO esportleagueoflegends.mecze (meczid, komentatorid, turniejid)
+VALUES (5, 5, 5);
+INSERT INTO esportleagueoflegends.mecze (meczid, komentatorid, turniejid)
+VALUES (6, 1, 1);
+INSERT INTO esportleagueoflegends.mecze (meczid, komentatorid, turniejid)
+VALUES (1, 1, 1);
+INSERT INTO esportleagueoflegends.mecze (meczid, komentatorid, turniejid)
+VALUES (8, 1, 1);
+
+-------------------------------------------------------------------------------
+-- Tabela: esportleagueoflegends.postacie
+INSERT INTO esportleagueoflegends.postacie (postacid, nazwa) VALUES (1, 'Ahri');
+INSERT INTO esportleagueoflegends.postacie (postacid, nazwa) VALUES (2, 'Zed');
+INSERT INTO esportleagueoflegends.postacie (postacid, nazwa) VALUES (3, 'Lux');
+INSERT INTO esportleagueoflegends.postacie (postacid, nazwa) VALUES (4, 'Lee Sin');
+INSERT INTO esportleagueoflegends.postacie (postacid, nazwa) VALUES (5, 'Thresh');
+INSERT INTO esportleagueoflegends.postacie (postacid, nazwa) VALUES (7, 'Pomidor');
+INSERT INTO esportleagueoflegends.postacie (postacid, nazwa) VALUES (8, 'Jinx');
+INSERT INTO esportleagueoflegends.postacie (postacid, nazwa) VALUES (9, 'Yasuo');
+INSERT INTO esportleagueoflegends.postacie (postacid, nazwa) VALUES (10, 'Ezreal');
+INSERT INTO esportleagueoflegends.postacie (postacid, nazwa) VALUES (11, 'Akali');
+INSERT INTO esportleagueoflegends.postacie (postacid, nazwa) VALUES (12, 'Katarina');
+INSERT INTO esportleagueoflegends.postacie (postacid, nazwa) VALUES (13, 'Darius');
+INSERT INTO esportleagueoflegends.postacie (postacid, nazwa) VALUES (14, 'Miss Fortune');
+INSERT INTO esportleagueoflegends.postacie (postacid, nazwa) VALUES (15, 'Riven');
+INSERT INTO esportleagueoflegends.postacie (postacid, nazwa) VALUES (16, 'Garen');
+INSERT INTO esportleagueoflegends.postacie (postacid, nazwa) VALUES (17, 'Teemo');
+INSERT INTO esportleagueoflegends.postacie (postacid, nazwa) VALUES (18, 'Fiora');
+INSERT INTO esportleagueoflegends.postacie (postacid, nazwa) VALUES (19, 'Morgana');
+INSERT INTO esportleagueoflegends.postacie (postacid, nazwa) VALUES (20, 'Nami');
+INSERT INTO esportleagueoflegends.postacie (postacid, nazwa) VALUES (21, 'Vayne');
+INSERT INTO esportleagueoflegends.postacie (postacid, nazwa) VALUES (22, 'Talon');
+INSERT INTO esportleagueoflegends.postacie (postacid, nazwa) VALUES (23, 'Kayle');
+INSERT INTO esportleagueoflegends.postacie (postacid, nazwa) VALUES (24, 'Jhin');
+INSERT INTO esportleagueoflegends.postacie (postacid, nazwa) VALUES (25, 'Zyra');
+
+-------------------------------------------------------------------------------
+-- Tabela: esportleagueoflegends.regiony
+INSERT INTO esportleagueoflegends.regiony (regionid, nazwa, skrot) 
+VALUES (1, 'Europe', 'EU');
+INSERT INTO esportleagueoflegends.regiony (regionid, nazwa, skrot) 
+VALUES (2, 'North America', 'NA');
+INSERT INTO esportleagueoflegends.regiony (regionid, nazwa, skrot) 
+VALUES (3, 'South Korea', 'KR');
+INSERT INTO esportleagueoflegends.regiony (regionid, nazwa, skrot) 
+VALUES (4, 'China', 'CN');
+INSERT INTO esportleagueoflegends.regiony (regionid, nazwa, skrot) 
+VALUES (5, 'Brazil', 'BR');
+
+-------------------------------------------------------------------------------
+-- Tabela: esportleagueoflegends.transfery
+INSERT INTO esportleagueoflegends.transfery (transferid, graczid, druzyna1, druzyna2)
+VALUES (1, 1, 1, 2);
+INSERT INTO esportleagueoflegends.transfery (transferid, graczid, druzyna1, druzyna2)
+VALUES (2, 3, 2, 3);
+INSERT INTO esportleagueoflegends.transfery (transferid, graczid, druzyna1, druzyna2)
+VALUES (3, 5, 3, 4);
+INSERT INTO esportleagueoflegends.transfery (transferid, graczid, druzyna1, druzyna2)
+VALUES (4, 7, 5, 6);
+INSERT INTO esportleagueoflegends.transfery (transferid, graczid, druzyna1, druzyna2)
+VALUES (5, 9, 6, 1);
+INSERT INTO esportleagueoflegends.transfery (transferid, graczid, druzyna1, druzyna2)
+VALUES (18, 1, 1, 4);
+INSERT INTO esportleagueoflegends.transfery (transferid, graczid, druzyna1, druzyna2)
+VALUES (19, 1, 1, 4);
+INSERT INTO esportleagueoflegends.transfery (transferid, graczid, druzyna1, druzyna2)
+VALUES (20, 1, 4, 1);
+
+-------------------------------------------------------------------------------
+-- Tabela: esportleagueoflegends.trenerzy
+INSERT INTO esportleagueoflegends.trenerzy (trenerid, imie, nazwisko, druzynaid)
+VALUES (1, 'Fabian', 'Lohmann', 1);
+INSERT INTO esportleagueoflegends.trenerzy (trenerid, imie, nazwisko, druzynaid)
+VALUES (2, 'Jakob', 'Mebdi', 2);
+INSERT INTO esportleagueoflegends.trenerzy (trenerid, imie, nazwisko, druzynaid)
+VALUES (3, 'Joshua', 'Smith', 3);
+INSERT INTO esportleagueoflegends.trenerzy (trenerid, imie, nazwisko, druzynaid)
+VALUES (4, 'Kim', 'Jeong-soo', 4);
+INSERT INTO esportleagueoflegends.trenerzy (trenerid, imie, nazwisko, druzynaid)
+VALUES (5, 'Jian', 'Li', 5);
+INSERT INTO esportleagueoflegends.trenerzy (trenerid, imie, nazwisko, druzynaid)
+VALUES (6, 'Gabriel', 'Henrique', 6);
+INSERT INTO esportleagueoflegends.trenerzy (trenerid, imie, nazwisko, druzynaid)
+VALUES (7, '123', '123', 1);
+
+-------------------------------------------------------------------------------
+-- Tabela: esportleagueoflegends.turnieje
+INSERT INTO esportleagueoflegends.turnieje (turniejid, nazwaturnieju, rodzaj, organizator, adres, regionid, data)
+VALUES (1, 'World Championship', 'International', 'Riot Games', 'Busan, South Korea', 3, '2023-10-15');
+INSERT INTO esportleagueoflegends.turnieje (turniejid, nazwaturnieju, rodzaj, organizator, adres, regionid, data)
+VALUES (2, 'MSI', 'International', 'Riot Games', 'Shanghai, China', 4, '2023-05-20');
+INSERT INTO esportleagueoflegends.turnieje (turniejid, nazwaturnieju, rodzaj, organizator, adres, regionid, data)
+VALUES (3, 'LEC Finals', 'Regional', 'Riot Games', 'Berlin, Germany', 1, '2023-08-10');
+INSERT INTO esportleagueoflegends.turnieje (turniejid, nazwaturnieju, rodzaj, organizator, adres, regionid, data)
+VALUES (4, 'LCS Finals', 'Regional', 'Riot Games', 'Los Angeles, USA', 2, '2023-09-05');
+INSERT INTO esportleagueoflegends.turnieje (turniejid, nazwaturnieju, rodzaj, organizator, adres, regionid, data)
+VALUES (5, 'CBLOL Finals', 'Regional', 'Riot Games', 'São Paulo, Brazil', 5, '2023-11-01');
+INSERT INTO esportleagueoflegends.turnieje (turniejid, nazwaturnieju, rodzaj, organizator, adres, regionid, data)
+VALUES (6, 'asd', 'asd', 'asd', 'asd', 2, '2025-01-19');
+
+-------------------------------------------------------------------------------
+-- Tabela: esportleagueoflegends.xyz
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (226, 21, 2, 15, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (227, 22, 2, 4, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (228, 23, 2, 22, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (229, 24, 2, 17, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (230, 25, 2, 18, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (231, 26, 2, 1, 0);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (232, 27, 2, 3, 0);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (233, 28, 2, 10, 0);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (234, 29, 2, 13, 0);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (235, 30, 2, 5, 0);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (236, 11, 3, 9, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (237, 12, 3, 24, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (238, 13, 3, 12, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (239, 14, 3, 19, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (240, 15, 3, 21, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (241, 16, 3, 11, 0);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (242, 17, 3, 8, 0);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (243, 18, 3, 3, 0);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (244, 19, 3, 2, 0);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (245, 20, 3, 25, 0);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (246, 41, 4, 14, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (247, 42, 4, 16, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (248, 43, 4, 20, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (249, 44, 4, 7, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (250, 45, 4, 23, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (251, 1, 4, 22, 0);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (252, 2, 4, 15, 0);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (253, 3, 4, 17, 0);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (254, 4, 4, 4, 0);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (255, 5, 4, 10, 0);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (256, 11, 5, 9, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (257, 12, 5, 24, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (258, 13, 5, 12, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (259, 14, 5, 19, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (260, 15, 5, 21, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (261, 6, 5, 24, 0);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (262, 7, 5, 11, 0);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (263, 8, 5, 3, 0);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (264, 9, 5, 7, 0);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (265, 10, 5, 20, 0);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (266, 21, 6, 15, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (267, 22, 6, 4, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (268, 23, 6, 22, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (269, 24, 6, 17, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (270, 25, 6, 18, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (271, 41, 6, 14, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (272, 42, 6, 16, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (273, 43, 6, 20, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (274, 44, 6, 7, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (275, 45, 6, 23, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (276, 41, 8, 14, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (277, 42, 8, 16, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (278, 43, 8, 20, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (279, 44, 8, 7, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (280, 45, 8, 23, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (281, 6, 8, 21, 0);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (282, 7, 8, 11, 0);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (283, 8, 8, 9, 0);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (284, 9, 8, 4, 0);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (285, 10, 8, 8, 0);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (286, 1, 1, 15, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (287, 2, 1, 4, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (288, 3, 1, 22, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (289, 4, 1, 17, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (290, 5, 1, 18, 1);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (291, 6, 1, 1, 0);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (292, 7, 1, 3, 0);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (293, 8, 1, 10, 0);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (294, 9, 1, 13, 0);
+INSERT INTO esportleagueoflegends.xyz (uniqueid, graczid, meczid, postacid, wynik)
+VALUES (295, 10, 1, 5, 0);
+
+
+
+--
+-- TOC entry 4972 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: druzyny_druzynaid_seq; Type: SEQUENCE SET; Schema: esportleagueoflegends; Owner: postgres
+--
+
+SELECT pg_catalog.setval('esportleagueoflegends.druzyny_druzynaid_seq', 15, true);
+
+
+--
+-- TOC entry 4973 (class 0 OID 0)
+-- Dependencies: 221
+-- Name: gracze_graczid_seq; Type: SEQUENCE SET; Schema: esportleagueoflegends; Owner: postgres
+--
+
+SELECT pg_catalog.setval('esportleagueoflegends.gracze_graczid_seq', 45, true);
+
+
+--
+-- TOC entry 4974 (class 0 OID 0)
+-- Dependencies: 223
+-- Name: komentatorzy_komentatorid_seq; Type: SEQUENCE SET; Schema: esportleagueoflegends; Owner: postgres
+--
+
+SELECT pg_catalog.setval('esportleagueoflegends.komentatorzy_komentatorid_seq', 6, true);
+
+
+--
+-- TOC entry 4975 (class 0 OID 0)
+-- Dependencies: 225
+-- Name: mecze_meczid_seq; Type: SEQUENCE SET; Schema: esportleagueoflegends; Owner: postgres
+--
+
+SELECT pg_catalog.setval('esportleagueoflegends.mecze_meczid_seq', 8, true);
+
+
+--
+-- TOC entry 4976 (class 0 OID 0)
+-- Dependencies: 227
+-- Name: postacie_postacid_seq; Type: SEQUENCE SET; Schema: esportleagueoflegends; Owner: postgres
+--
+
+SELECT pg_catalog.setval('esportleagueoflegends.postacie_postacid_seq', 7, true);
+
+
+--
+-- TOC entry 4977 (class 0 OID 0)
+-- Dependencies: 229
+-- Name: regiony_regionid_seq; Type: SEQUENCE SET; Schema: esportleagueoflegends; Owner: postgres
+--
+
+SELECT pg_catalog.setval('esportleagueoflegends.regiony_regionid_seq', 5, true);
+
+
+--
+-- TOC entry 4978 (class 0 OID 0)
+-- Dependencies: 231
+-- Name: transfery_transferid_seq; Type: SEQUENCE SET; Schema: esportleagueoflegends; Owner: postgres
+--
+
+SELECT pg_catalog.setval('esportleagueoflegends.transfery_transferid_seq', 20, true);
+
+
+--
+-- TOC entry 4979 (class 0 OID 0)
+-- Dependencies: 233
+-- Name: trenerzy_trenerid_seq; Type: SEQUENCE SET; Schema: esportleagueoflegends; Owner: postgres
+--
+
+SELECT pg_catalog.setval('esportleagueoflegends.trenerzy_trenerid_seq', 7, true);
+
+
+--
+-- TOC entry 4980 (class 0 OID 0)
+-- Dependencies: 235
+-- Name: turnieje_turniejid_seq; Type: SEQUENCE SET; Schema: esportleagueoflegends; Owner: postgres
+--
+
+SELECT pg_catalog.setval('esportleagueoflegends.turnieje_turniejid_seq', 6, true);
+
+
+--
+-- TOC entry 4981 (class 0 OID 0)
+-- Dependencies: 237
+-- Name: xyz_uniqueid_seq; Type: SEQUENCE SET; Schema: esportleagueoflegends; Owner: postgres
+--
+
+SELECT pg_catalog.setval('esportleagueoflegends.xyz_uniqueid_seq', 295, true);
+
+
+--
+-- TOC entry 4759 (class 2606 OID 17164)
+-- Name: druzyny druzyny_pkey; Type: CONSTRAINT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.druzyny
+    ADD CONSTRAINT druzyny_pkey PRIMARY KEY (druzynaid);
+
+
+--
+-- TOC entry 4761 (class 2606 OID 17166)
+-- Name: gracze gracze_pkey; Type: CONSTRAINT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.gracze
+    ADD CONSTRAINT gracze_pkey PRIMARY KEY (graczid);
+
+
+--
+-- TOC entry 4763 (class 2606 OID 17168)
+-- Name: komentatorzy komentatorzy_pkey; Type: CONSTRAINT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.komentatorzy
+    ADD CONSTRAINT komentatorzy_pkey PRIMARY KEY (komentatorid);
+
+
+--
+-- TOC entry 4765 (class 2606 OID 17170)
+-- Name: mecze mecze_pkey; Type: CONSTRAINT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.mecze
+    ADD CONSTRAINT mecze_pkey PRIMARY KEY (meczid);
+
+
+--
+-- TOC entry 4767 (class 2606 OID 17172)
+-- Name: postacie postacie_pkey; Type: CONSTRAINT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.postacie
+    ADD CONSTRAINT postacie_pkey PRIMARY KEY (postacid);
+
+
+--
+-- TOC entry 4769 (class 2606 OID 17174)
+-- Name: regiony regiony_pkey; Type: CONSTRAINT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.regiony
+    ADD CONSTRAINT regiony_pkey PRIMARY KEY (regionid);
+
+
+--
+-- TOC entry 4771 (class 2606 OID 17176)
+-- Name: transfery transfery_pkey; Type: CONSTRAINT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.transfery
+    ADD CONSTRAINT transfery_pkey PRIMARY KEY (transferid);
+
+
+--
+-- TOC entry 4773 (class 2606 OID 17178)
+-- Name: trenerzy trenerzy_pkey; Type: CONSTRAINT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.trenerzy
+    ADD CONSTRAINT trenerzy_pkey PRIMARY KEY (trenerid);
+
+
+--
+-- TOC entry 4775 (class 2606 OID 17180)
+-- Name: turnieje turnieje_pkey; Type: CONSTRAINT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.turnieje
+    ADD CONSTRAINT turnieje_pkey PRIMARY KEY (turniejid);
+
+
+--
+-- TOC entry 4777 (class 2606 OID 17182)
+-- Name: xyz xyz_pkey; Type: CONSTRAINT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.xyz
+    ADD CONSTRAINT xyz_pkey PRIMARY KEY (uniqueid);
+
+
+--
+-- TOC entry 4791 (class 2620 OID 17276)
+-- Name: transfery tr_transfer_gracza; Type: TRIGGER; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE TRIGGER tr_transfer_gracza AFTER INSERT ON esportleagueoflegends.transfery FOR EACH ROW EXECUTE FUNCTION esportleagueoflegends.fn_transfer_gracza();
+
+
+--
+-- TOC entry 4790 (class 2620 OID 17282)
+-- Name: gracze trigger_usun_transfery; Type: TRIGGER; Schema: esportleagueoflegends; Owner: postgres
+--
+
+CREATE TRIGGER trigger_usun_transfery BEFORE DELETE ON esportleagueoflegends.gracze FOR EACH ROW EXECUTE FUNCTION esportleagueoflegends.usun_transfery_po_usunieciu_gracza();
+
+
+--
+-- TOC entry 4778 (class 2606 OID 17183)
+-- Name: druzyny fk_druzyny_region; Type: FK CONSTRAINT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.druzyny
+    ADD CONSTRAINT fk_druzyny_region FOREIGN KEY (regionid) REFERENCES esportleagueoflegends.regiony(regionid);
+
+
+--
+-- TOC entry 4779 (class 2606 OID 17188)
+-- Name: gracze fk_gracze_druzyny; Type: FK CONSTRAINT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.gracze
+    ADD CONSTRAINT fk_gracze_druzyny FOREIGN KEY (druzynaid) REFERENCES esportleagueoflegends.druzyny(druzynaid);
+
+
+--
+-- TOC entry 4780 (class 2606 OID 17193)
+-- Name: mecze fk_mecze_komentatorzy; Type: FK CONSTRAINT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.mecze
+    ADD CONSTRAINT fk_mecze_komentatorzy FOREIGN KEY (komentatorid) REFERENCES esportleagueoflegends.komentatorzy(komentatorid);
+
+
+--
+-- TOC entry 4781 (class 2606 OID 17198)
+-- Name: mecze fk_mecze_turnieje; Type: FK CONSTRAINT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.mecze
+    ADD CONSTRAINT fk_mecze_turnieje FOREIGN KEY (turniejid) REFERENCES esportleagueoflegends.turnieje(turniejid);
+
+
+--
+-- TOC entry 4782 (class 2606 OID 17203)
+-- Name: transfery fk_transfery_druzyna1; Type: FK CONSTRAINT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.transfery
+    ADD CONSTRAINT fk_transfery_druzyna1 FOREIGN KEY (druzyna1) REFERENCES esportleagueoflegends.druzyny(druzynaid);
+
+
+--
+-- TOC entry 4783 (class 2606 OID 17208)
+-- Name: transfery fk_transfery_druzyna2; Type: FK CONSTRAINT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.transfery
+    ADD CONSTRAINT fk_transfery_druzyna2 FOREIGN KEY (druzyna2) REFERENCES esportleagueoflegends.druzyny(druzynaid);
+
+
+--
+-- TOC entry 4784 (class 2606 OID 17213)
+-- Name: transfery fk_transfery_gracze; Type: FK CONSTRAINT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.transfery
+    ADD CONSTRAINT fk_transfery_gracze FOREIGN KEY (graczid) REFERENCES esportleagueoflegends.gracze(graczid);
+
+
+--
+-- TOC entry 4785 (class 2606 OID 17223)
+-- Name: trenerzy fk_trenerzy_druzyny; Type: FK CONSTRAINT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.trenerzy
+    ADD CONSTRAINT fk_trenerzy_druzyny FOREIGN KEY (druzynaid) REFERENCES esportleagueoflegends.druzyny(druzynaid);
+
+
+--
+-- TOC entry 4786 (class 2606 OID 17228)
+-- Name: turnieje fk_turnieje_regiony; Type: FK CONSTRAINT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.turnieje
+    ADD CONSTRAINT fk_turnieje_regiony FOREIGN KEY (regionid) REFERENCES esportleagueoflegends.regiony(regionid);
+
+
+--
+-- TOC entry 4787 (class 2606 OID 17233)
+-- Name: xyz fk_xyz_gracze; Type: FK CONSTRAINT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.xyz
+    ADD CONSTRAINT fk_xyz_gracze FOREIGN KEY (graczid) REFERENCES esportleagueoflegends.gracze(graczid);
+
+
+--
+-- TOC entry 4788 (class 2606 OID 17238)
+-- Name: xyz fk_xyz_mecze; Type: FK CONSTRAINT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.xyz
+    ADD CONSTRAINT fk_xyz_mecze FOREIGN KEY (meczid) REFERENCES esportleagueoflegends.mecze(meczid);
+
+
+--
+-- TOC entry 4789 (class 2606 OID 17243)
+-- Name: xyz fk_xyz_postac; Type: FK CONSTRAINT; Schema: esportleagueoflegends; Owner: postgres
+--
+
+ALTER TABLE ONLY esportleagueoflegends.xyz
+    ADD CONSTRAINT fk_xyz_postac FOREIGN KEY (postacid) REFERENCES esportleagueoflegends.postacie(postacid);
+
+
+-- Completed on 2025-01-20 23:10:20
+
+--
+-- PostgreSQL database dump complete
+--
+
